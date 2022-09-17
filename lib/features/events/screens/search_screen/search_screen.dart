@@ -1,0 +1,40 @@
+import 'package:digital_14/assets/colors/colors.dart';
+import 'package:digital_14/features/events/screens/search_screen/search_screen_widget_model.dart';
+import 'package:digital_14/features/events/screens/search_screen/widgets/search_app_bar_widget/search_app_bar_widget.dart';
+import 'package:digital_14/features/server/domain/domain.dart';
+import 'package:elementary/elementary.dart';
+import 'package:flutter/material.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
+
+/// Widget screen with search results and search field app bar.
+class SearchScreen extends ElementaryWidget<ISearchScreenWidgetModel> {
+  /// Create an instance [PlaceResidenceScreen].
+  const SearchScreen({
+    Key? key,
+    WidgetModelFactory wmFactory = searchScreenWidgetModelFactory,
+  }) : super(wmFactory, key: key);
+
+  @override
+  Widget build(ISearchScreenWidgetModel wm) {
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: appBarBackground,
+        title: const SearchAppBarWidget(),
+      ),
+      body: PagedListView<int, EventModel>(
+        pagingController: wm.pagingController,
+        builderDelegate: PagedChildBuilderDelegate<EventModel>(itemBuilder: (context, item, index) {
+          return SizedBox(
+            height: 100.0,
+            child: Center(
+              child: Text(
+                item.title ?? 'no title',
+              ),
+            ),
+          );
+        }),
+      ),
+    );
+  }
+}

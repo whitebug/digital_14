@@ -1,16 +1,13 @@
 # digital_14
 
-A new Flutter project.
+Test task
 
-## Getting Started
+## Client Id and Client Secret
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Before building the app it is required to make a .env file in route of the project.
+The file should contain client id and client secret from https://seatgeek.com/account/develop.
+An example of .env file:
+```
+CLIENT_ID=YourClientId
+CLIENT_SECRET=YourClientSecret
+```

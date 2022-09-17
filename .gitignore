@@ -1,4 +1,6 @@
 # Miscellaneous
+.fvm/flutter_sdk
+*.env
 *.class
 *.log
 *.pyc

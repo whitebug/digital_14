@@ -1,0 +1,23 @@
+{
+  "@@locale": "en",
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Cancel button text"
+  },
+  "loading": "Loading",
+  "@loading": {
+    "description": "Loading screen text"
+  },
+  "error": "Error",
+  "@error": {
+    "description": "Error text"
+  },
+  "tryAgain": "Please try again later",
+  "@tryAgain": {
+    "description": "Error handling instructions"
+  },
+  "tryAgainButton": "Try again",
+  "@tryAgainButton": {
+    "description": "Try again button text"
+  }
+}
