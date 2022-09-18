@@ -8,10 +8,10 @@ part 'event_response_model.g.dart';
 @JsonSerializable()
 class EventResponseModel {
   List<EventModel> events;
-  MetaModel metaModel;
+  MetaModel meta;
   EventResponseModel({
     required this.events,
-    required this.metaModel,
+    required this.meta,
   });
 
   factory EventResponseModel.fromJson(Map<String, dynamic> json) =>

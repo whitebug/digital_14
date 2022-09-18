@@ -6,7 +6,9 @@ part 'venue_model.g.dart';
 @JsonSerializable()
 class VenueModel {
   String? state;
+  @JsonKey(name: 'name_v2')
   String? nameV2;
+  @JsonKey(name: 'postal_code')
   String? postalCode;
   String? name;
   List<String>? links;
@@ -16,16 +18,22 @@ class VenueModel {
   LocationModel? location;
   String? address;
   String? country;
+  @JsonKey(name: 'has_upcoming_events')
   bool? hasUpcomingEvents;
+  @JsonKey(name: 'num_upcoming_events')
   int? numUpcomingEvents;
   String? city;
   String? slug;
+  @JsonKey(name: 'extended_address')
   String? extendedAddress;
   int? id;
   int? popularity;
+  @JsonKey(name: 'access_method')
   AccessMethodModel? accessMethod;
+  @JsonKey(name: 'metro_code')
   int? metroCode;
   int? capacity;
+  @JsonKey(name: 'display_location')
   String? displayLocation;
 
   VenueModel({

@@ -5,7 +5,9 @@ part 'access_method_model.g.dart';
 @JsonSerializable()
 class AccessMethodModel {
   String? method;
+  @JsonKey(name: 'created_at')
   String? createdAt;
+  @JsonKey(name: 'employee_only')
   bool? employeeOnly;
 
   AccessMethodModel({

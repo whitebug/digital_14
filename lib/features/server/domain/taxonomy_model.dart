@@ -7,7 +7,9 @@ part 'taxonomy_model.g.dart';
 class TaxonomyModel {
   int? id;
   String? name;
+  @JsonKey(name: 'parent_id')
   int? parentId;
+  @JsonKey(name: 'document_source')
   DocumentSourceModel? documentSource;
   int? rank;
 

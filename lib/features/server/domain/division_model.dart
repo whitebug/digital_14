@@ -4,10 +4,15 @@ part 'division_model.g.dart';
 
 @JsonSerializable()
 class DivisionModel {
+  @JsonKey(name: 'taxonomy_id')
   int? taxonomyId;
+  @JsonKey(name: 'short_name')
   String? shortName;
+  @JsonKey(name: 'display_name')
   String? displayName;
+  @JsonKey(name: 'display_type')
   String? displayType;
+  @JsonKey(name: 'division_level')
   int? divisionLevel;
   String? slug;
 

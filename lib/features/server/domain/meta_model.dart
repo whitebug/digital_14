@@ -7,6 +7,7 @@ class MetaModel {
   int? total;
   int? took;
   int? page;
+  @JsonKey(name: 'per_page')
   int? perPage;
 
   MetaModel({

@@ -37,8 +37,8 @@ class AppScope implements IAppScope {
     _sharedPrefHelper = SharedPrefHelper();
     _errorHandler = DefaultErrorHandler();
     _coordinator = Coordinator();
-    _dio = Dio(BaseOptions(baseUrl: baseUrl));
-    _eventsClient = EventsClient(_dio);
+    _dio = Dio();
+    _eventsClient = EventsClient(_dio, baseUrl: baseUrl);
     _eventsRepository = EventsRepository(
       eventsClient: _eventsClient,
       dio: _dio,

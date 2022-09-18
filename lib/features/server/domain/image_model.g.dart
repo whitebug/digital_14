@@ -21,12 +21,12 @@ ImageModel _$ImageModelFromJson(Map<String, dynamic> json) => ImageModel(
       fb100x72: json['fb100x72'] as String?,
       fb600315: json['fb600315'] as String?,
       huge: json['huge'] as String?,
-      ipadEventModal: json['ipadEventModal'] as String?,
-      ipadHeader: json['ipadHeader'] as String?,
-      ipadMiniExplore: json['ipadMiniExplore'] as String?,
+      ipadEventModal: json['ipad_event_modal'] as String?,
+      ipadHeader: json['ipad_header'] as String?,
+      ipadMiniExplore: json['ipad_mini_explore'] as String?,
       mongo: json['mongo'] as String?,
-      squareMid: json['squareMid'] as String?,
-      triggitFbAd: json['triggitFbAd'] as String?,
+      squareMid: json['square_mid'] as String?,
+      triggitFbAd: json['triggit_fb_ad'] as String?,
     );
 
 Map<String, dynamic> _$ImageModelToJson(ImageModel instance) =>
@@ -45,10 +45,10 @@ Map<String, dynamic> _$ImageModelToJson(ImageModel instance) =>
       'fb100x72': instance.fb100x72,
       'fb600315': instance.fb600315,
       'huge': instance.huge,
-      'ipadEventModal': instance.ipadEventModal,
-      'ipadHeader': instance.ipadHeader,
-      'ipadMiniExplore': instance.ipadMiniExplore,
+      'ipad_event_modal': instance.ipadEventModal,
+      'ipad_header': instance.ipadHeader,
+      'ipad_mini_explore': instance.ipadMiniExplore,
       'mongo': instance.mongo,
-      'squareMid': instance.squareMid,
-      'triggitFbAd': instance.triggitFbAd,
+      'square_mid': instance.squareMid,
+      'triggit_fb_ad': instance.triggitFbAd,
     };

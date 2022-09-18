@@ -18,11 +18,16 @@ class ImageModel {
   String? fb100x72;
   String? fb600315;
   String? huge;
+  @JsonKey(name: 'ipad_event_modal')
   String? ipadEventModal;
+  @JsonKey(name: 'ipad_header')
   String? ipadHeader;
+  @JsonKey(name: 'ipad_mini_explore')
   String? ipadMiniExplore;
   String? mongo;
+  @JsonKey(name: 'square_mid')
   String? squareMid;
+  @JsonKey(name: 'triggit_fb_ad')
   String? triggitFbAd;
 
   ImageModel({

@@ -18,7 +18,7 @@ PerformerModel _$PerformerModelFromJson(Map<String, dynamic> json) =>
       divisions: (json['divisions'] as List<dynamic>?)
           ?.map((e) => DivisionModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      hasUpcomingEvents: json['hasUpcomingEvents'] as bool?,
+      hasUpcomingEvents: json['has_upcoming_events'] as bool?,
       primary: json['primary'] as bool?,
       stats: json['stats'] == null
           ? null
@@ -26,17 +26,17 @@ PerformerModel _$PerformerModelFromJson(Map<String, dynamic> json) =>
       taxonomies: (json['taxonomies'] as List<dynamic>?)
           ?.map((e) => TaxonomyModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      imageAttribution: json['imageAttribution'] as String?,
+      imageAttribution: json['image_attribution'] as String?,
       url: json['url'] as String?,
       score: (json['score'] as num?)?.toDouble(),
       slug: json['slug'] as String?,
-      homeVenueId: json['homeVenueId'] as int?,
-      shortName: json['shortName'] as String?,
-      numUpcomingEvents: json['numUpcomingEvents'] as int?,
+      homeVenueId: json['home_venue_id'] as int?,
+      shortName: json['short_name'] as String?,
+      numUpcomingEvents: json['num_upcoming_events'] as int?,
       colors: json['colors'] == null
           ? null
           : ColorModel.fromJson(json['colors'] as Map<String, dynamic>),
-      imageLicense: json['imageLicense'] as String?,
+      imageLicense: json['image_license'] as String?,
       genres: (json['genres'] as List<dynamic>?)
           ?.map((e) => GenreModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -44,9 +44,9 @@ PerformerModel _$PerformerModelFromJson(Map<String, dynamic> json) =>
       location: json['location'] == null
           ? null
           : LocationModel.fromJson(json['location'] as Map<String, dynamic>),
-      imageRightsMessage: json['imageRightsMessage'] as String?,
-      homeTeam: json['homeTeam'] as bool?,
-      awayTeam: json['awayTeam'] as bool?,
+      imageRightsMessage: json['image_rights_message'] as String?,
+      homeTeam: json['home_team'] as bool?,
+      awayTeam: json['away_team'] as bool?,
     );
 
 Map<String, dynamic> _$PerformerModelToJson(PerformerModel instance) =>
@@ -57,23 +57,23 @@ Map<String, dynamic> _$PerformerModelToJson(PerformerModel instance) =>
       'id': instance.id,
       'images': instance.images,
       'divisions': instance.divisions,
-      'hasUpcomingEvents': instance.hasUpcomingEvents,
+      'has_upcoming_events': instance.hasUpcomingEvents,
       'primary': instance.primary,
       'stats': instance.stats,
       'taxonomies': instance.taxonomies,
-      'imageAttribution': instance.imageAttribution,
+      'image_attribution': instance.imageAttribution,
       'url': instance.url,
       'score': instance.score,
       'slug': instance.slug,
-      'homeVenueId': instance.homeVenueId,
-      'shortName': instance.shortName,
-      'numUpcomingEvents': instance.numUpcomingEvents,
+      'home_venue_id': instance.homeVenueId,
+      'short_name': instance.shortName,
+      'num_upcoming_events': instance.numUpcomingEvents,
       'colors': instance.colors,
-      'imageLicense': instance.imageLicense,
+      'image_license': instance.imageLicense,
       'genres': instance.genres,
       'popularity': instance.popularity,
       'location': instance.location,
-      'imageRightsMessage': instance.imageRightsMessage,
-      'homeTeam': instance.homeTeam,
-      'awayTeam': instance.awayTeam,
+      'image_rights_message': instance.imageRightsMessage,
+      'home_team': instance.homeTeam,
+      'away_team': instance.awayTeam,
     };

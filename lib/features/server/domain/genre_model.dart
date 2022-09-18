@@ -11,6 +11,7 @@ class GenreModel {
   bool? primary;
   ImageModel? images;
   String? image;
+  @JsonKey(name: 'document_source')
   DocumentSourceModel? documentSource;
 
   GenreModel({

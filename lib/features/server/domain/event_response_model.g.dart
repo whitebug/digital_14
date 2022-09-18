@@ -11,11 +11,11 @@ EventResponseModel _$EventResponseModelFromJson(Map<String, dynamic> json) =>
       events: (json['events'] as List<dynamic>)
           .map((e) => EventModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      metaModel: MetaModel.fromJson(json['metaModel'] as Map<String, dynamic>),
+      meta: MetaModel.fromJson(json['meta'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$EventResponseModelToJson(EventResponseModel instance) =>
     <String, dynamic>{
       'events': instance.events,
-      'metaModel': instance.metaModel,
+      'meta': instance.meta,
     };

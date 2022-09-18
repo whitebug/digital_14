@@ -4,7 +4,9 @@ part 'document_source_model.g.dart';
 
 @JsonSerializable()
 class DocumentSourceModel {
+  @JsonKey(name: 'source_type')
   String? sourceType;
+  @JsonKey(name: 'generation_type')
   String? generationType;
 
   DocumentSourceModel({

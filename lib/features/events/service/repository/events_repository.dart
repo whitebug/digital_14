@@ -5,17 +5,17 @@ import 'package:digital_14/features/server/events/events_client.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+const String baseUrl = 'https://api.seatgeek.com';
+
 /// Repository interface for working with events.
 abstract class IEventsRepository {
   /// Return events list
-  Future<EventResponseModel?> getEvents({
+  Future<EventResponseModel> getEvents({
     required String searchRequest,
     int? perPage = 10,
     int? page = 1,
   });
 }
-
-const String baseUrl = 'https://api.seatgeek.com';
 
 /// Repository for working with events by using [EventsClient].
 class EventsRepository implements IEventsRepository {
@@ -29,27 +29,20 @@ class EventsRepository implements IEventsRepository {
   });
 
   @override
-  Future<EventResponseModel?> getEvents({
+  Future<EventResponseModel> getEvents({
     required String searchRequest,
     int? perPage = 10,
     int? page = 1,
   }) async {
-    final eventsResponse = await dio.get(
-      '/2/events?q=$searchRequest&'
-          'client_id=${dotenv.env['CLIENT_ID']}&'
-          'client_secret=${dotenv.env['CLIENT_SECRET']}&'
-          'per_page=$perPage&'
-          'page=$page',
-    );
-    final events = eventsResponse.data['events'];
-    final meta = eventsResponse.data['meta'];
-    if (events != null) {
-      return EventResponseModel(
-        events: EventModel.fromJsonToList(events),
-        metaModel: MetaModel.fromJson(meta),
-      );
-    }
-    return null;
+    final Map<String, dynamic> queries = {};
+    queries['q'] = searchRequest;
+    queries['per_page'] = perPage;
+    queries['page'] = page;
+    queries['client_id'] = dotenv.env['CLIENT_ID'];
+    queries['client_secret'] = dotenv.env['CLIENT_SECRET'];
+
+    final EventResponseModel profile = await eventsClient.getEvents(queries);
+    return profile;
   }
 }
 
@@ -69,7 +62,7 @@ class MockRepository implements IEventsRepository {
       return Future.delayed(const Duration(seconds: 1)).then(
         (value) => EventResponseModel(
           events: [],
-          metaModel: MetaModel(),
+          meta: MetaModel(),
         ),
       );
     }
@@ -97,14 +90,14 @@ class MockRepository implements IEventsRepository {
         return Future.delayed(const Duration(seconds: 1)).then(
           (value) => EventResponseModel(
             events: part1,
-            metaModel: MetaModel(),
+            meta: MetaModel(),
           ),
         );
       case 2:
         return Future.delayed(const Duration(seconds: 1)).then(
           (value) => EventResponseModel(
             events: part2,
-            metaModel: MetaModel(),
+            meta: MetaModel(),
           ),
         );
       case 3:
@@ -115,7 +108,7 @@ class MockRepository implements IEventsRepository {
         return Future.delayed(const Duration(seconds: 1)).then(
           (value) => EventResponseModel(
             events: [],
-            metaModel: MetaModel(),
+            meta: MetaModel(),
           ),
         );
     }

@@ -65,17 +65,14 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
     Emitter<EventsState> emit,
   ) async {
     try {
-      final EventResponseModel? result = await _eventsRepository.getEvents(
+      final EventResponseModel result = await _eventsRepository.getEvents(
         searchRequest: event.searchRequest,
         page: event.page,
         perPage: event.perPage,
       );
-      if (result == null) {
-        return;
-      }
       final bool searchNotChanged = event.searchRequest == state.searchRequest;
       final List<EventModel> newEvents = result.events;
-      final MetaModel meta = result.metaModel;
+      final MetaModel meta = result.meta;
       final int perPage = meta.perPage ?? event.perPage;
       final int currentPage = meta.page ?? event.page;
       final isLastPage = newEvents.length < perPage;
@@ -116,7 +113,7 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
     emit(const EventsState());
   }
 
-  Future<void> _storeFavoriteState({
+  Future<void> _storeFavorites({
     required String eventId,
     required bool favorite,
   }) async {
@@ -142,7 +139,7 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
     if (index < 0) {
       return;
     }
-    _storeFavoriteState(
+    _storeFavorites(
       eventId: event.eventModel.id!.toString(),
       favorite: event.favorite,
     );

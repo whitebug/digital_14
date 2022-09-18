@@ -8,8 +8,8 @@ part of 'venue_model.dart';
 
 VenueModel _$VenueModelFromJson(Map<String, dynamic> json) => VenueModel(
       state: json['state'] as String?,
-      nameV2: json['nameV2'] as String?,
-      postalCode: json['postalCode'] as String?,
+      nameV2: json['name_v2'] as String?,
+      postalCode: json['postal_code'] as String?,
       name: json['name'] as String?,
       links:
           (json['links'] as List<dynamic>?)?.map((e) => e as String).toList(),
@@ -21,27 +21,27 @@ VenueModel _$VenueModelFromJson(Map<String, dynamic> json) => VenueModel(
           : LocationModel.fromJson(json['location'] as Map<String, dynamic>),
       address: json['address'] as String?,
       country: json['country'] as String?,
-      hasUpcomingEvents: json['hasUpcomingEvents'] as bool?,
-      numUpcomingEvents: json['numUpcomingEvents'] as int?,
+      hasUpcomingEvents: json['has_upcoming_events'] as bool?,
+      numUpcomingEvents: json['num_upcoming_events'] as int?,
       city: json['city'] as String?,
       slug: json['slug'] as String?,
-      extendedAddress: json['extendedAddress'] as String?,
+      extendedAddress: json['extended_address'] as String?,
       id: json['id'] as int?,
       popularity: json['popularity'] as int?,
-      accessMethod: json['accessMethod'] == null
+      accessMethod: json['access_method'] == null
           ? null
           : AccessMethodModel.fromJson(
-              json['accessMethod'] as Map<String, dynamic>),
-      metroCode: json['metroCode'] as int?,
+              json['access_method'] as Map<String, dynamic>),
+      metroCode: json['metro_code'] as int?,
       capacity: json['capacity'] as int?,
-      displayLocation: json['displayLocation'] as String?,
+      displayLocation: json['display_location'] as String?,
     );
 
 Map<String, dynamic> _$VenueModelToJson(VenueModel instance) =>
     <String, dynamic>{
       'state': instance.state,
-      'nameV2': instance.nameV2,
-      'postalCode': instance.postalCode,
+      'name_v2': instance.nameV2,
+      'postal_code': instance.postalCode,
       'name': instance.name,
       'links': instance.links,
       'timezone': instance.timezone,
@@ -50,15 +50,15 @@ Map<String, dynamic> _$VenueModelToJson(VenueModel instance) =>
       'location': instance.location,
       'address': instance.address,
       'country': instance.country,
-      'hasUpcomingEvents': instance.hasUpcomingEvents,
-      'numUpcomingEvents': instance.numUpcomingEvents,
+      'has_upcoming_events': instance.hasUpcomingEvents,
+      'num_upcoming_events': instance.numUpcomingEvents,
       'city': instance.city,
       'slug': instance.slug,
-      'extendedAddress': instance.extendedAddress,
+      'extended_address': instance.extendedAddress,
       'id': instance.id,
       'popularity': instance.popularity,
-      'accessMethod': instance.accessMethod,
-      'metroCode': instance.metroCode,
+      'access_method': instance.accessMethod,
+      'metro_code': instance.metroCode,
       'capacity': instance.capacity,
-      'displayLocation': instance.displayLocation,
+      'display_location': instance.displayLocation,
     };

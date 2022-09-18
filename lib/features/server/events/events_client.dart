@@ -10,5 +10,7 @@ abstract class EventsClient {
   factory EventsClient(Dio dio, {String baseUrl}) = _EventsClient;
 
   @GET(AppUrls.events)
-  Future<EventResponseModel> getEvents(@Queries() Map<String, dynamic> queries);
+  Future<EventResponseModel> getEvents(
+    @Queries() Map<String, dynamic> queries,
+  );
 }

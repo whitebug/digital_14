@@ -15,10 +15,10 @@ GenreModel _$GenreModelFromJson(Map<String, dynamic> json) => GenreModel(
           ? null
           : ImageModel.fromJson(json['images'] as Map<String, dynamic>),
       image: json['image'] as String?,
-      documentSource: json['documentSource'] == null
+      documentSource: json['document_source'] == null
           ? null
           : DocumentSourceModel.fromJson(
-              json['documentSource'] as Map<String, dynamic>),
+              json['document_source'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$GenreModelToJson(GenreModel instance) =>
@@ -29,5 +29,5 @@ Map<String, dynamic> _$GenreModelToJson(GenreModel instance) =>
       'primary': instance.primary,
       'images': instance.images,
       'image': instance.image,
-      'documentSource': instance.documentSource,
+      'document_source': instance.documentSource,
     };
