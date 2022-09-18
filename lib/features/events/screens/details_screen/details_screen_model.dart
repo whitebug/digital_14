@@ -9,7 +9,7 @@ class DetailsScreenModel extends ElementaryModel {
   final EventsBloc _eventBloc;
 
   /// Stream to track the state of the [EventsBloc]
-  Stream<EventsState> get eventStateStream => _eventBloc.stream;
+  Stream<EventsState> get eventsStateStream => _eventBloc.stream;
 
   /// Gives the current state.
   EventsState get currentState => _eventBloc.state;

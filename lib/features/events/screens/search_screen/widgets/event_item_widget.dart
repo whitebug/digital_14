@@ -18,12 +18,13 @@ class EventItemWidget extends StatelessWidget {
   final EventModel eventModel;
   final VoidCallback onChooseEvent;
 
-  String formatTime({required String? time}) {
+  static DateFormat formatter = DateFormat('E, dd MM yyyy h:m a');
+
+  static String formatTime({required String? time}) {
     if (time == null) {
       return '';
     }
     final DateTime date = DateTime.parse(time);
-    var formatter = DateFormat('E, dd MM yyyy h:m a');
     return formatter.format(date);
   }
 
@@ -132,8 +133,8 @@ class EventImage extends StatelessWidget {
         ),
         if (favorite == true)
           const Positioned(
-            top: 2,
-            left: 5,
+            top: 2.0,
+            left: 5.0,
             child: HeartWithBorder(iconHeight: 25.0),
           )
       ],
@@ -152,6 +153,7 @@ class HeartWithBorder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const double borderWidth = 6.0;
     return Stack(
       children: [
         Icon(
@@ -163,7 +165,7 @@ class HeartWithBorder extends StatelessWidget {
           child: Icon(
             Icons.favorite,
             color: btnColor,
-            size: iconHeight - 6.0,
+            size: iconHeight - borderWidth,
           ),
         ),
       ],

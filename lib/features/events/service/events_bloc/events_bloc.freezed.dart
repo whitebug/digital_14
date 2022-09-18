@@ -126,7 +126,9 @@ class __$$_GetEventsEventCopyWithImpl<$Res>
 
 class _$_GetEventsEvent implements _GetEventsEvent {
   const _$_GetEventsEvent(
-      {required this.searchRequest, this.page = 1, this.perPage = 10});
+      {required this.searchRequest,
+      this.page = defaultFirstPage,
+      this.perPage = 10});
 
   @override
   final String searchRequest;

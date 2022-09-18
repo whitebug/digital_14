@@ -5,7 +5,7 @@ class EventsListEvent with _$EventsListEvent {
   /// Getting events that fits to [searchRequest]
   const factory EventsListEvent.getEvents({
     required String searchRequest,
-    @Default(1) int page,
+    @Default(defaultFirstPage) int page,
     @Default(10) int perPage,
   }) = _GetEventsEvent;
 

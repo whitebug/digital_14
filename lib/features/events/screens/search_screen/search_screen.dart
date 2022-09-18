@@ -35,7 +35,9 @@ class SearchScreen extends ElementaryWidget<ISearchScreenWidgetModel> {
             itemBuilder: (context, item, index) {
               return EventItemWidget(
                 eventModel: item,
-                onChooseEvent: () {},
+                onChooseEvent: () {
+                  wm.openEventDetails(item);
+                },
               );
             },
             firstPageErrorIndicatorBuilder: (_) => FirstPageErrorIndicator(

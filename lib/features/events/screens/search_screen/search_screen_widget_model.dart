@@ -4,6 +4,7 @@ import 'package:digital_14/features/app/di/app_scope.dart';
 import 'package:digital_14/features/events/screens/search_screen/search_screen.dart';
 import 'package:digital_14/features/events/screens/search_screen/search_screen_model.dart';
 import 'package:digital_14/features/events/service/events_bloc/events_bloc.dart';
+import 'package:digital_14/features/navigation/domain/entity/app_coordinate.dart';
 import 'package:digital_14/features/navigation/service/coordinator.dart';
 import 'package:digital_14/features/server/domain/domain.dart';
 import 'package:digital_14/l10n/l10n.dart';
@@ -55,7 +56,9 @@ class SearchScreenWidgetModel extends WidgetModel<SearchScreen, SearchScreenMode
   void initWidgetModel() {
     super.initWidgetModel();
     _l10n = context.l10n;
-    _stateStatusSubscription = model.eventsStateStream.listen(_updateState);
+    _stateStatusSubscription = model.eventsStateStream.listen(
+      _updateState,
+    );
     _pagingController.addPageRequestListener((pageKey) {
       model.turnPage(page: pageKey);
     });
@@ -75,12 +78,24 @@ class SearchScreenWidgetModel extends WidgetModel<SearchScreen, SearchScreenMode
       error: state.error,
     );
   }
+
+  @override
+  void openEventDetails(EventModel eventModel) {
+    coordinator.navigate(
+      context,
+      AppCoordinates.detailsScreen,
+      arguments: eventModel,
+    );
+  }
 }
 
 /// Interface of [SearchScreenWidgetModel].
 abstract class ISearchScreenWidgetModel extends IWidgetModel {
   /// Controller for a event list view
   PagingController<int, EventModel> get pagingController;
+
   /// Localization
   AppLocalizations get l10n;
+
+  void openEventDetails(EventModel eventModel);
 }
