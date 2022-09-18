@@ -1,5 +1,6 @@
 import 'package:digital_14/features/events/service/events_bloc/events_bloc.dart';
 import 'package:digital_14/features/events/service/repository/events_repository.dart';
+import 'package:digital_14/features/events/service/shared_pref_helper.dart';
 import 'package:digital_14/features/navigation/service/coordinator.dart';
 import 'package:digital_14/features/server/events/events_client.dart';
 import 'package:digital_14/util/default_error_handler.dart';
@@ -14,6 +15,7 @@ class AppScope implements IAppScope {
   late final EventsClient _eventsClient;
   late final EventsBloc _eventsBloc;
   late final IEventsRepository _eventsRepository;
+  late final SharedPrefHelper _sharedPrefHelper;
 
   @override
   ErrorHandler get errorHandler => _errorHandler;
@@ -27,8 +29,12 @@ class AppScope implements IAppScope {
   @override
   IEventsRepository get eventsRepository => _eventsRepository;
 
+  @override
+  SharedPrefHelper get sharedHelper => _sharedPrefHelper;
+
   /// Create an instance [AppScope].
   AppScope() {
+    _sharedPrefHelper = SharedPrefHelper();
     _errorHandler = DefaultErrorHandler();
     _coordinator = Coordinator();
     _dio = Dio(BaseOptions(baseUrl: baseUrl));
@@ -37,7 +43,10 @@ class AppScope implements IAppScope {
       eventsClient: _eventsClient,
       dio: _dio,
     );
-    _eventsBloc = EventsBloc(_eventsRepository);
+    _eventsBloc = EventsBloc(
+      _eventsRepository,
+      _sharedPrefHelper,
+    );
   }
 }
 
@@ -54,4 +63,7 @@ abstract class IAppScope {
 
   /// Repository for events
   IEventsRepository get eventsRepository;
+
+  /// Storage
+  SharedPrefHelper get sharedHelper;
 }

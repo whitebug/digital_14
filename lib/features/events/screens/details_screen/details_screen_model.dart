@@ -28,8 +28,10 @@ class DetailsScreenModel extends ElementaryModel {
   /// Change event's favorite value
   void toggleFavorite(EventModel? eventModel) {
     if (eventModel != null) {
+      changeFavoriteUi(!eventIsFavorite.value);
       _eventBloc.add(EventsListEvent.favorite(
         eventModel: eventModel,
+        favorite: eventIsFavorite.value,
       ));
     }
   }

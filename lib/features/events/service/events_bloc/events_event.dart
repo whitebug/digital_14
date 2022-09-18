@@ -19,5 +19,6 @@ class EventsListEvent with _$EventsListEvent {
 
   const factory EventsListEvent.favorite({
     required EventModel eventModel,
+    required bool favorite,
   }) = _FavoriteEvent;
 }

@@ -56,7 +56,7 @@ class DetailsScreenWidgetModel extends WidgetModel<DetailsScreen, DetailsScreenM
   @override
   void initWidgetModel() {
     super.initWidgetModel();
-    model.changeFavoriteUi(model.eventIsFavorite.value);
+    model.changeFavoriteUi(eventModel?.favorite?? false);
   }
 
   @override
@@ -68,7 +68,6 @@ class DetailsScreenWidgetModel extends WidgetModel<DetailsScreen, DetailsScreenM
   @override
   void toggleFavorite() {
     model.toggleFavorite(eventModel);
-    model.changeFavoriteUi(!model.eventIsFavorite.value);
   }
 }
 
