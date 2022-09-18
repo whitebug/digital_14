@@ -7,27 +7,38 @@ part 'event_model.g.dart';
 class EventModel {
   String? type;
   int? id;
+  @JsonKey(name: 'datetime_utc')
   String? datetimeUtc;
   VenueModel? venue;
+  @JsonKey(name: 'datetime_tbd')
   bool? datetimeTbd;
   List<PerformerModel>? performers;
+  @JsonKey(name: 'is_open')
   bool? isOpen;
   List<String>? links;
+  @JsonKey(name: 'datetime_local')
   String? datetimeLocal;
+  @JsonKey(name: 'time_tbd')
   bool? timeTbd;
+  @JsonKey(name: 'short_title')
   String? shortTitle;
+  @JsonKey(name: 'visible_until_utc')
   String? visibleUntilUtc;
   StatisticsModel? stats;
   List<TaxonomyModel>? taxonomies;
   String? url;
   double? score;
+  @JsonKey(name: 'announce_date')
   String? announceDate;
+  @JsonKey(name: 'created_at')
   String? createdAt;
+  @JsonKey(name: 'date_tbd')
   bool? dateTbd;
   String? title;
   double? popularity;
   String? description;
   String? status;
+  @JsonKey(name: 'access_method')
   AccessMethodModel? accessMethod;
   bool? conditional;
   bool? favorite;

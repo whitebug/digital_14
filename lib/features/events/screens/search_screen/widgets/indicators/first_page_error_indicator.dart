@@ -1,3 +1,4 @@
+import 'package:digital_14/assets/colors/colors.dart';
 import 'package:digital_14/assets/typography/app_typography.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,10 @@ class FirstPageErrorIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
+        padding: const EdgeInsets.symmetric(
+          vertical: 32.0,
+          horizontal: 16.0,
+        ),
         child: Column(
           children: [
             Text(
@@ -26,16 +30,16 @@ class FirstPageErrorIndicator extends StatelessWidget {
               style: AppTypography.header,
             ),
             const SizedBox(
-              height: 48,
+              height: 48.0,
             ),
             SizedBox(
-              height: 50,
+              height: 50.0,
               width: double.infinity,
               child: ElevatedButton.icon(
                 onPressed: onTryAgain,
                 icon: const Icon(
                   Icons.refresh,
-                  color: Colors.white,
+                  color: white,
                 ),
                 label: Text(
                   buttonTitle,

@@ -8,7 +8,7 @@ import 'package:elementary/elementary.dart';
 
 /// Scope of dependencies which need through all app's life.
 class AppScope implements IAppScope {
-  late final Dio _http;
+  late final Dio _dio;
   late final ErrorHandler _errorHandler;
   late final Coordinator _coordinator;
   late final EventsClient _eventsClient;
@@ -31,9 +31,12 @@ class AppScope implements IAppScope {
   AppScope() {
     _errorHandler = DefaultErrorHandler();
     _coordinator = Coordinator();
-    _http = Dio();
-    _eventsClient = EventsClient(_http);
-    _eventsRepository = MockRepository(_eventsClient);
+    _dio = Dio(BaseOptions(baseUrl: baseUrl));
+    _eventsClient = EventsClient(_dio);
+    _eventsRepository = EventsRepository(
+      eventsClient: _eventsClient,
+      dio: _dio,
+    );
     _eventsBloc = EventsBloc(_eventsRepository);
   }
 }

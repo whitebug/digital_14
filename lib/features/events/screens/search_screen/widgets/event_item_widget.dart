@@ -121,7 +121,7 @@ class EventImage extends StatelessWidget {
                           child: CircularProgressIndicator(),
                         ),
                         errorWidget: (context, url, error) => icon,
-                        fit: BoxFit.fill,
+                        fit: BoxFit.cover,
                       )
                     : const ColoredBox(
                         color: hintColor,

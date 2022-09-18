@@ -16,4 +16,8 @@ class EventsListEvent with _$EventsListEvent {
 
   /// Reset results
   const factory EventsListEvent.reset() = _ResetEvent;
+
+  const factory EventsListEvent.favorite({
+    required EventModel eventModel,
+  }) = _FavoriteEvent;
 }

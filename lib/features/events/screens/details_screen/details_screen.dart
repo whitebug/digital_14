@@ -24,55 +24,89 @@ class DetailsScreen extends ElementaryWidget<DetailsScreenWidgetModel> {
       appBar: AppBar(
         title: Text(
           '${wm.eventModel?.title}',
+          maxLines: 2,
           style: AppTypography.titleBold.copyWith(color: black),
         ),
         centerTitle: false,
         leading: const BackButton(
           color: backButton,
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 7.0),
+            child: IconButton(
+              onPressed: wm.toggleFavorite,
+              icon: ValueListenableBuilder<bool>(
+                valueListenable: wm.eventIsFavorite,
+                builder: (BuildContext context, bool data, Widget? child) {
+                  return Stack(
+                    children: [
+                      const Icon(
+                        Icons.favorite,
+                        color: btnColor,
+                        size: 25.0,
+                      ),
+                      Positioned.fill(
+                        child: Icon(
+                          Icons.favorite,
+                          color: data ? btnColor : white,
+                          size: 25.0 - 6.0,
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
         backgroundColor: white,
         elevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Divider(color: appBarBackground),
-            const SizedBox(height: 15.0),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8.0),
-              child: SizedBox(
-                height: 200.0,
-                width: wm.screenWidth,
-                child: wm.imageUrl != null
-                    ? CachedNetworkImage(
-                        imageUrl: wm.imageUrl!,
-                        placeholder: (context, url) => const Center(
-                          child: CircularProgressIndicator(),
-                        ),
-                        errorWidget: (context, url, error) => EventImage.icon,
-                        fit: BoxFit.fill,
-                      )
-                    : const ColoredBox(
-                        color: hintColor,
-                        child: EventImage.icon,
-                      ),
+      body: ColoredBox(
+        color: white,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Divider(color: appBarBackground),
+              const SizedBox(height: 15.0),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(8.0),
+                child: SizedBox(
+                  height: 200.0,
+                  width: wm.screenWidth,
+                  child: wm.imageUrl != null
+                      ? CachedNetworkImage(
+                    imageUrl: wm.imageUrl!,
+                    placeholder: (context, url) =>
+                    const Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                    errorWidget: (context, url, error) => EventImage.icon,
+                    fit: BoxFit.cover,
+                  )
+                      : const ColoredBox(
+                    color: hintColor,
+                    child: EventImage.icon,
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(height: 15.0),
-            Text(
-              EventItemWidget.formatTime(time: wm.eventModel?.datetimeUtc),
-              style: AppTypography.titleBold,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const SizedBox(height: 10.0),
-            Text(
-              '${eventModel?.venue?.city}, ${eventModel?.venue?.state}',
-              style: AppTypography.cardBody.copyWith(color: textColorPrimary),
-              overflow: TextOverflow.ellipsis,
-            ),
-          ],
+              const SizedBox(height: 15.0),
+              Text(
+                EventItemWidget.formatTime(time: wm.eventModel?.datetimeUtc),
+                style: AppTypography.titleBold,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const SizedBox(height: 10.0),
+              Text(
+                '${eventModel?.venue?.city}, ${eventModel?.venue?.state}',
+                style: AppTypography.cardBody.copyWith(color: textColorPrimary),
+                overflow: TextOverflow.ellipsis,
+              ),
+            ],
+          ),
         ),
       ),
     );

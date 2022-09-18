@@ -17,6 +17,7 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
     on<_GetEventsEvent>(_onGetEvents);
     on<_TurnPageEvent>(_onTurnPage);
     on<_ResetEvent>(_onReset);
+    on<_FavoriteEvent>(_onFavorite);
   }
 
   List<EventModel> _getAllEvents({
@@ -36,11 +37,14 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
     Emitter<EventsState> emit,
   ) async {
     try {
-      final EventResponseModel result = await _eventsRepository.getEvents(
+      final EventResponseModel? result = await _eventsRepository.getEvents(
         searchRequest: event.searchRequest,
         page: event.page,
         perPage: event.perPage,
       );
+      if (result == null) {
+        return;
+      }
       final bool searchNotChanged = event.searchRequest == state.searchRequest;
       final List<EventModel> newEvents = result.events;
       final MetaModel meta = result.metaModel;
@@ -80,5 +84,26 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
     Emitter<EventsState> emit,
   ) {
     emit(const EventsState());
+  }
+
+  void _onFavorite(
+    _FavoriteEvent event,
+    Emitter<EventsState> emit,
+  ) {
+    final List<EventModel>? eventsList = state.eventsList;
+    if (eventsList == null) {
+      return;
+    }
+    final int index = eventsList.indexWhere(
+      (element) => element.id == event.eventModel.id,
+    );
+    if (index < 0) {
+      return;
+    }
+    // If [favorite] is null, thus it is false
+    final ifFavorite = event.eventModel.favorite ?? false;
+    // Toggle favorite
+    eventsList[index].favorite = !ifFavorite;
+    emit(state.copyWith(eventsList: eventsList));
   }
 }

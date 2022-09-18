@@ -22,6 +22,7 @@ mixin _$EventsListEvent {
         getEvents,
     required TResult Function(int? page) turnPage,
     required TResult Function() reset,
+    required TResult Function(EventModel eventModel) favorite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,6 +30,7 @@ mixin _$EventsListEvent {
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
+    TResult Function(EventModel eventModel)? favorite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,6 +38,7 @@ mixin _$EventsListEvent {
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
+    TResult Function(EventModel eventModel)? favorite,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -44,6 +47,7 @@ mixin _$EventsListEvent {
     required TResult Function(_GetEventsEvent value) getEvents,
     required TResult Function(_TurnPageEvent value) turnPage,
     required TResult Function(_ResetEvent value) reset,
+    required TResult Function(_FavoriteEvent value) favorite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -51,6 +55,7 @@ mixin _$EventsListEvent {
     TResult Function(_GetEventsEvent value)? getEvents,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
+    TResult Function(_FavoriteEvent value)? favorite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -58,6 +63,7 @@ mixin _$EventsListEvent {
     TResult Function(_GetEventsEvent value)? getEvents,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
+    TResult Function(_FavoriteEvent value)? favorite,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -174,6 +180,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
         getEvents,
     required TResult Function(int? page) turnPage,
     required TResult Function() reset,
+    required TResult Function(EventModel eventModel) favorite,
   }) {
     return getEvents(searchRequest, page, perPage);
   }
@@ -184,6 +191,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
+    TResult Function(EventModel eventModel)? favorite,
   }) {
     return getEvents?.call(searchRequest, page, perPage);
   }
@@ -194,6 +202,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
+    TResult Function(EventModel eventModel)? favorite,
     required TResult orElse(),
   }) {
     if (getEvents != null) {
@@ -208,6 +217,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
     required TResult Function(_GetEventsEvent value) getEvents,
     required TResult Function(_TurnPageEvent value) turnPage,
     required TResult Function(_ResetEvent value) reset,
+    required TResult Function(_FavoriteEvent value) favorite,
   }) {
     return getEvents(this);
   }
@@ -218,6 +228,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
     TResult Function(_GetEventsEvent value)? getEvents,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
+    TResult Function(_FavoriteEvent value)? favorite,
   }) {
     return getEvents?.call(this);
   }
@@ -228,6 +239,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
     TResult Function(_GetEventsEvent value)? getEvents,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
+    TResult Function(_FavoriteEvent value)? favorite,
     required TResult orElse(),
   }) {
     if (getEvents != null) {
@@ -320,6 +332,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
         getEvents,
     required TResult Function(int? page) turnPage,
     required TResult Function() reset,
+    required TResult Function(EventModel eventModel) favorite,
   }) {
     return turnPage(page);
   }
@@ -330,6 +343,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
+    TResult Function(EventModel eventModel)? favorite,
   }) {
     return turnPage?.call(page);
   }
@@ -340,6 +354,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
+    TResult Function(EventModel eventModel)? favorite,
     required TResult orElse(),
   }) {
     if (turnPage != null) {
@@ -354,6 +369,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
     required TResult Function(_GetEventsEvent value) getEvents,
     required TResult Function(_TurnPageEvent value) turnPage,
     required TResult Function(_ResetEvent value) reset,
+    required TResult Function(_FavoriteEvent value) favorite,
   }) {
     return turnPage(this);
   }
@@ -364,6 +380,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
     TResult Function(_GetEventsEvent value)? getEvents,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
+    TResult Function(_FavoriteEvent value)? favorite,
   }) {
     return turnPage?.call(this);
   }
@@ -374,6 +391,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
     TResult Function(_GetEventsEvent value)? getEvents,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
+    TResult Function(_FavoriteEvent value)? favorite,
     required TResult orElse(),
   }) {
     if (turnPage != null) {
@@ -437,6 +455,7 @@ class _$_ResetEvent implements _ResetEvent {
         getEvents,
     required TResult Function(int? page) turnPage,
     required TResult Function() reset,
+    required TResult Function(EventModel eventModel) favorite,
   }) {
     return reset();
   }
@@ -447,6 +466,7 @@ class _$_ResetEvent implements _ResetEvent {
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
+    TResult Function(EventModel eventModel)? favorite,
   }) {
     return reset?.call();
   }
@@ -457,6 +477,7 @@ class _$_ResetEvent implements _ResetEvent {
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
+    TResult Function(EventModel eventModel)? favorite,
     required TResult orElse(),
   }) {
     if (reset != null) {
@@ -471,6 +492,7 @@ class _$_ResetEvent implements _ResetEvent {
     required TResult Function(_GetEventsEvent value) getEvents,
     required TResult Function(_TurnPageEvent value) turnPage,
     required TResult Function(_ResetEvent value) reset,
+    required TResult Function(_FavoriteEvent value) favorite,
   }) {
     return reset(this);
   }
@@ -481,6 +503,7 @@ class _$_ResetEvent implements _ResetEvent {
     TResult Function(_GetEventsEvent value)? getEvents,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
+    TResult Function(_FavoriteEvent value)? favorite,
   }) {
     return reset?.call(this);
   }
@@ -491,6 +514,7 @@ class _$_ResetEvent implements _ResetEvent {
     TResult Function(_GetEventsEvent value)? getEvents,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
+    TResult Function(_FavoriteEvent value)? favorite,
     required TResult orElse(),
   }) {
     if (reset != null) {
@@ -502,6 +526,155 @@ class _$_ResetEvent implements _ResetEvent {
 
 abstract class _ResetEvent implements EventsListEvent {
   const factory _ResetEvent() = _$_ResetEvent;
+}
+
+/// @nodoc
+abstract class _$$_FavoriteEventCopyWith<$Res> {
+  factory _$$_FavoriteEventCopyWith(
+          _$_FavoriteEvent value, $Res Function(_$_FavoriteEvent) then) =
+      __$$_FavoriteEventCopyWithImpl<$Res>;
+  $Res call({EventModel eventModel});
+}
+
+/// @nodoc
+class __$$_FavoriteEventCopyWithImpl<$Res>
+    extends _$EventsListEventCopyWithImpl<$Res>
+    implements _$$_FavoriteEventCopyWith<$Res> {
+  __$$_FavoriteEventCopyWithImpl(
+      _$_FavoriteEvent _value, $Res Function(_$_FavoriteEvent) _then)
+      : super(_value, (v) => _then(v as _$_FavoriteEvent));
+
+  @override
+  _$_FavoriteEvent get _value => super._value as _$_FavoriteEvent;
+
+  @override
+  $Res call({
+    Object? eventModel = freezed,
+  }) {
+    return _then(_$_FavoriteEvent(
+      eventModel: eventModel == freezed
+          ? _value.eventModel
+          : eventModel // ignore: cast_nullable_to_non_nullable
+              as EventModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_FavoriteEvent implements _FavoriteEvent {
+  const _$_FavoriteEvent({required this.eventModel});
+
+  @override
+  final EventModel eventModel;
+
+  @override
+  String toString() {
+    return 'EventsListEvent.favorite(eventModel: $eventModel)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FavoriteEvent &&
+            const DeepCollectionEquality()
+                .equals(other.eventModel, eventModel));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(eventModel));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_FavoriteEventCopyWith<_$_FavoriteEvent> get copyWith =>
+      __$$_FavoriteEventCopyWithImpl<_$_FavoriteEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String searchRequest, int page, int perPage)
+        getEvents,
+    required TResult Function(int? page) turnPage,
+    required TResult Function() reset,
+    required TResult Function(EventModel eventModel) favorite,
+  }) {
+    return favorite(eventModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(int? page)? turnPage,
+    TResult Function()? reset,
+    TResult Function(EventModel eventModel)? favorite,
+  }) {
+    return favorite?.call(eventModel);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(int? page)? turnPage,
+    TResult Function()? reset,
+    TResult Function(EventModel eventModel)? favorite,
+    required TResult orElse(),
+  }) {
+    if (favorite != null) {
+      return favorite(eventModel);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetEventsEvent value) getEvents,
+    required TResult Function(_TurnPageEvent value) turnPage,
+    required TResult Function(_ResetEvent value) reset,
+    required TResult Function(_FavoriteEvent value) favorite,
+  }) {
+    return favorite(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_TurnPageEvent value)? turnPage,
+    TResult Function(_ResetEvent value)? reset,
+    TResult Function(_FavoriteEvent value)? favorite,
+  }) {
+    return favorite?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_TurnPageEvent value)? turnPage,
+    TResult Function(_ResetEvent value)? reset,
+    TResult Function(_FavoriteEvent value)? favorite,
+    required TResult orElse(),
+  }) {
+    if (favorite != null) {
+      return favorite(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FavoriteEvent implements EventsListEvent {
+  const factory _FavoriteEvent({required final EventModel eventModel}) =
+      _$_FavoriteEvent;
+
+  EventModel get eventModel;
+  @JsonKey(ignore: true)
+  _$$_FavoriteEventCopyWith<_$_FavoriteEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc

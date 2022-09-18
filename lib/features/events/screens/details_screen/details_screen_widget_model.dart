@@ -43,16 +43,32 @@ class DetailsScreenWidgetModel extends WidgetModel<DetailsScreen, DetailsScreenM
   @override
   double get screenWidth => MediaQuery.of(context).size.width;
 
-  /// Create an instance [DetailsScreenWidgetModel].
+  @override
+  ValueNotifier<bool> get eventIsFavorite => model.eventIsFavorite;
+
+      /// Create an instance [DetailsScreenWidgetModel].
   DetailsScreenWidgetModel({
     required DetailsScreenModel model,
     required this.coordinator,
   }) : super(model);
 
+
+  @override
+  void initWidgetModel() {
+    super.initWidgetModel();
+    model.changeFavoriteUi(model.eventIsFavorite.value);
+  }
+
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     _l10n = context.l10n;
+  }
+
+  @override
+  void toggleFavorite() {
+    model.toggleFavorite(eventModel);
+    model.changeFavoriteUi(!model.eventIsFavorite.value);
   }
 }
 
@@ -68,4 +84,8 @@ abstract class IDetailsScreenWidgetModel extends IWidgetModel {
   String? get imageUrl;
 
   double get screenWidth;
+
+  void toggleFavorite();
+
+  ValueNotifier<bool> get eventIsFavorite;
 }

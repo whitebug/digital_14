@@ -2,40 +2,54 @@ import 'dart:io';
 
 import 'package:digital_14/features/server/domain/domain.dart';
 import 'package:digital_14/features/server/events/events_client.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /// Repository interface for working with events.
 abstract class IEventsRepository {
   /// Return events list
-  Future<EventResponseModel> getEvents({
+  Future<EventResponseModel?> getEvents({
     required String searchRequest,
     int? perPage = 10,
     int? page = 1,
   });
 }
 
+const String baseUrl = 'https://api.seatgeek.com';
+
 /// Repository for working with events by using [EventsClient].
 class EventsRepository implements IEventsRepository {
   final EventsClient eventsClient;
+  final Dio dio;
 
   /// Create an instance [MockProfileRepository].
-  const EventsRepository(this.eventsClient);
+  const EventsRepository({
+    required this.eventsClient,
+    required this.dio,
+  });
 
   @override
-  Future<EventResponseModel> getEvents({
+  Future<EventResponseModel?> getEvents({
     required String searchRequest,
     int? perPage = 10,
     int? page = 1,
   }) async {
-    final Map<String, dynamic> queries = {};
-    queries['q'] = searchRequest;
-    queries['per_page'] = perPage;
-    queries['page'] = page;
-    queries['client_id'] = dotenv.env['CLIENT_ID'];
-    queries['client_secret'] = dotenv.env['CLIENT_SECRET'];
-
-    final profile = await eventsClient.getEvents(queries);
-    return profile;
+    final eventsResponse = await dio.get(
+      '/2/events?q=$searchRequest&'
+          'client_id=${dotenv.env['CLIENT_ID']}&'
+          'client_secret=${dotenv.env['CLIENT_SECRET']}&'
+          'per_page=$perPage&'
+          'page=$page',
+    );
+    final events = eventsResponse.data['events'];
+    final meta = eventsResponse.data['meta'];
+    if (events != null) {
+      return EventResponseModel(
+        events: EventModel.fromJsonToList(events),
+        metaModel: MetaModel.fromJson(meta),
+      );
+    }
+    return null;
   }
 }
 
