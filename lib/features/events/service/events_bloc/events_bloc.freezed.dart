@@ -660,7 +660,7 @@ class _$EventsListState implements EventsListState {
   const _$EventsListState(
       {this.searchRequest = '',
       final List<EventModel>? eventsList,
-      this.page = 1,
+      this.page = defaultFirstPage,
       this.perPage = 10,
       this.metaModel,
       this.error,

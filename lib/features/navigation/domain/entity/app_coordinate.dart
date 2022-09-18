@@ -1,4 +1,4 @@
-import 'package:digital_14/features/events/screens/event_screen/event_screen.dart';
+import 'package:digital_14/features/events/screens/details_screen/details_screen.dart';
 import 'package:digital_14/features/events/screens/search_screen/search_screen.dart';
 import 'package:digital_14/features/navigation/domain/entity/coordinate.dart';
 
@@ -21,5 +21,5 @@ class AppCoordinates implements Coordinate {
 /// List of main routes of the app.
 final Map<AppCoordinates, CoordinateBuilder> appCoordinates = {
   AppCoordinates.searchScreen: (_, __) => const SearchScreen(),
-  AppCoordinates.eventScreen: (_, __) => const EventScreen(),
+  AppCoordinates.eventScreen: (_, __) => const DetailsScreen(),
 };

@@ -30,6 +30,7 @@ class EventModel {
   String? status;
   AccessMethodModel? accessMethod;
   bool? conditional;
+  bool? favorite;
 
   EventModel({
     this.type,
@@ -57,6 +58,7 @@ class EventModel {
     this.status,
     this.accessMethod,
     this.conditional,
+    this.favorite,
   });
 
   factory EventModel.fromJson(Map<String, dynamic> json) =>

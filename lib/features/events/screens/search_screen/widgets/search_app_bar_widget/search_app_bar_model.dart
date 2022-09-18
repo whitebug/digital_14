@@ -1,8 +1,11 @@
 import 'package:digital_14/features/events/service/events_bloc/events_bloc.dart';
 import 'package:elementary/elementary.dart';
+import 'package:flutter/foundation.dart';
 
 class SearchAppBarModel extends ElementaryModel {
   final EventsBloc _eventsBloc;
+
+  final ValueNotifier<bool> showCancelButton = ValueNotifier(false);
 
   SearchAppBarModel(this._eventsBloc);
 
@@ -11,6 +14,11 @@ class SearchAppBarModel extends ElementaryModel {
     _eventsBloc.add(EventsListEvent.getEvents(
       searchRequest: searchRequest,
     ));
+  }
+
+  /// Show or hide cancel button
+  void changeCancelButtonVisibility(bool visible) {
+    showCancelButton.value = visible;
   }
 
   /// Reset search and results

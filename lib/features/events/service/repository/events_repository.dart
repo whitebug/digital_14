@@ -61,7 +61,19 @@ class MockRepository implements IEventsRepository {
     }
 
     final mockEventList = List.generate(30, (index) {
-      return EventModel(title: '$searchRequest $index');
+      return EventModel(
+        title: '$searchRequest $index',
+        performers: [
+          PerformerModel(
+            image: 'https://frontofficesports.com/wp-content/uploads/2022/04/FOS-22-4.25-Oakland-Athletics.jpg',
+          ),
+        ],
+        venue: VenueModel(
+          city: 'New York',
+          state: 'NY',
+        ),
+        datetimeUtc: '2012-03-10T00:00:00',
+      );
     });
 
     final part1 = mockEventList.sublist(0, perPage);
@@ -83,11 +95,11 @@ class MockRepository implements IEventsRepository {
         );
       case 3:
         return Future.delayed(const Duration(seconds: 1)).then(
-              (value) => throw const HttpException('exception'),
+          (value) => throw const HttpException('exception'),
         );
       default:
         return Future.delayed(const Duration(seconds: 1)).then(
-              (value) => EventResponseModel(
+          (value) => EventResponseModel(
             events: [],
             metaModel: MetaModel(),
           ),

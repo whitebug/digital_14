@@ -44,6 +44,7 @@ EventModel _$EventModelFromJson(Map<String, dynamic> json) => EventModel(
           : AccessMethodModel.fromJson(
               json['accessMethod'] as Map<String, dynamic>),
       conditional: json['conditional'] as bool?,
+      favorite: json['favorite'] as bool?,
     );
 
 Map<String, dynamic> _$EventModelToJson(EventModel instance) =>
@@ -73,4 +74,5 @@ Map<String, dynamic> _$EventModelToJson(EventModel instance) =>
       'status': instance.status,
       'accessMethod': instance.accessMethod,
       'conditional': instance.conditional,
+      'favorite': instance.favorite,
     };

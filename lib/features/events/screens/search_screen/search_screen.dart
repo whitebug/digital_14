@@ -1,5 +1,6 @@
 import 'package:digital_14/assets/colors/colors.dart';
 import 'package:digital_14/features/events/screens/search_screen/search_screen_widget_model.dart';
+import 'package:digital_14/features/events/screens/search_screen/widgets/event_item_widget.dart';
 import 'package:digital_14/features/events/screens/search_screen/widgets/search_app_bar_widget/search_app_bar_widget.dart';
 import 'package:digital_14/features/server/domain/domain.dart';
 import 'package:elementary/elementary.dart';
@@ -24,34 +25,35 @@ class SearchScreen extends ElementaryWidget<ISearchScreenWidgetModel> {
         backgroundColor: appBarBackground,
         title: const SearchAppBarWidget(),
       ),
-      body: PagedListView<int, EventModel>(
-        pagingController: wm.pagingController,
-        builderDelegate: PagedChildBuilderDelegate<EventModel>(
-          itemBuilder: (context, item, index) {
-            return SizedBox(
-              height: 100.0,
-              child: Center(
-                child: Text(
-                  item.title ?? 'no title',
-                ),
-              ),
-            );
-          },
-          firstPageErrorIndicatorBuilder: (_) => FirstPageErrorIndicator(
-            title: wm.l10n.errorNeedRefresh,
-            buttonTitle: wm.l10n.tryAgainButton,
-            onTryAgain: wm.pagingController.retryLastFailedRequest,
-          ),
-          newPageErrorIndicatorBuilder: (_) {
-            return NewPageErrorIndicator(
-              title: '${wm.l10n.errorNeedRefresh}. ${wm.l10n.tryAgainButton}',
-              onRefresh: wm.pagingController.retryLastFailedRequest,
-            );
-          },
-          firstPageProgressIndicatorBuilder: (_) => const FirstPageProgressIndicator(),
-          newPageProgressIndicatorBuilder: (_) => const NewPageProgressIndicator(),
-          noItemsFoundIndicatorBuilder: (_) => NoItemsFoundIndicator(
-            text: wm.l10n.nothingToShow,
+      body: RefreshIndicator(
+        onRefresh: () => Future.sync(
+          () => wm.pagingController.refresh(),
+        ),
+        child: PagedListView<int, EventModel>(
+          pagingController: wm.pagingController,
+          builderDelegate: PagedChildBuilderDelegate<EventModel>(
+            itemBuilder: (context, item, index) {
+              return EventItemWidget(
+                eventModel: item,
+                onChooseEvent: () {},
+              );
+            },
+            firstPageErrorIndicatorBuilder: (_) => FirstPageErrorIndicator(
+              title: wm.l10n.errorNeedRefresh,
+              buttonTitle: wm.l10n.tryAgainButton,
+              onTryAgain: wm.pagingController.retryLastFailedRequest,
+            ),
+            newPageErrorIndicatorBuilder: (_) {
+              return NewPageErrorIndicator(
+                title: '${wm.l10n.errorNeedRefresh}. ${wm.l10n.tryAgainButton}',
+                onRefresh: wm.pagingController.retryLastFailedRequest,
+              );
+            },
+            firstPageProgressIndicatorBuilder: (_) => const FirstPageProgressIndicator(),
+            newPageProgressIndicatorBuilder: (_) => const NewPageProgressIndicator(),
+            noItemsFoundIndicatorBuilder: (_) => NoItemsFoundIndicator(
+              text: wm.l10n.nothingToShow,
+            ),
           ),
         ),
       ),

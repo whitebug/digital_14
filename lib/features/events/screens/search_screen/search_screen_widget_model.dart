@@ -33,9 +33,6 @@ class SearchScreenWidgetModel extends WidgetModel<SearchScreen, SearchScreenMode
   /// Coordinator for navigation.
   final Coordinator coordinator;
 
-  /// Events list that fits search request
-  final ValueNotifier<List<EventModel>> events = ValueNotifier([]);
-
   late final StreamSubscription<EventsState> _stateStatusSubscription;
 
   late final AppLocalizations _l10n;

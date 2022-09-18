@@ -19,6 +19,18 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
     on<_ResetEvent>(_onReset);
   }
 
+  List<EventModel> _getAllEvents({
+    required List<EventModel> newEvents,
+    required bool searchNotChanged,
+  }) {
+    final List<EventModel> oldEvents = state.eventsList ?? [];
+    if (searchNotChanged) {
+      return [...oldEvents, ...newEvents];
+    } else {
+      return newEvents;
+    }
+  }
+
   Future<void> _onGetEvents(
     _GetEventsEvent event,
     Emitter<EventsState> emit,
@@ -29,14 +41,17 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
         page: event.page,
         perPage: event.perPage,
       );
+      final bool searchNotChanged = event.searchRequest == state.searchRequest;
       final List<EventModel> newEvents = result.events;
       final MetaModel meta = result.metaModel;
       final int perPage = meta.perPage ?? event.perPage;
       final int currentPage = meta.page ?? event.page;
       final isLastPage = newEvents.length < perPage;
       final nextPage = isLastPage ? null : currentPage + 1;
-      final List<EventModel> oldEvents = state.eventsList ?? [];
-      final List<EventModel> allEvents = [...oldEvents, ...newEvents];
+      final List<EventModel> allEvents = _getAllEvents(
+        newEvents: newEvents,
+        searchNotChanged: searchNotChanged,
+      );
       emit(EventsState(
         eventsList: allEvents,
         page: event.page,
@@ -53,7 +68,7 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
     _TurnPageEvent event,
     Emitter<EventsState> emit,
   ) {
-    final int nextPage = event.page ?? state.nextPage ?? 1;
+    final int nextPage = event.page ?? state.nextPage ?? defaultFirstPage;
     add(EventsListEvent.getEvents(
       searchRequest: state.searchRequest,
       page: nextPage,

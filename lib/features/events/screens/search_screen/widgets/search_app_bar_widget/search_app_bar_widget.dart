@@ -32,12 +32,19 @@ class SearchAppBarWidget extends ElementaryWidget<ISearchAppBarWidgetModel> {
                   Icons.search,
                   color: white,
                 ),
-                suffixIcon: wm.searchFieldController.text.isNotEmpty
-                    ? IconButton(
+                suffixIcon: ValueListenableBuilder<bool>(
+                  valueListenable: wm.showCancelButton,
+                  builder: (BuildContext context, bool data, Widget? child) {
+                    if (data) {
+                      return IconButton(
                         onPressed: wm.onCancelPressed,
                         icon: const Icon(Icons.cancel, color: white),
-                      )
-                    : null,
+                      );
+                    } else {
+                      return const SizedBox();
+                    }
+                  },
+                ),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),

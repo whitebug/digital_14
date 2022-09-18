@@ -22,6 +22,7 @@ SearchAppBarWidgetModel searchAppBarWidgetModelFactory(
 class SearchAppBarWidgetModel extends WidgetModel<SearchAppBarWidget, SearchAppBarModel>
     implements ISearchAppBarWidgetModel {
   final TextEditingController _searchFieldController = TextEditingController();
+
   late final AppLocalizations _l10n;
 
   @override
@@ -30,8 +31,11 @@ class SearchAppBarWidgetModel extends WidgetModel<SearchAppBarWidget, SearchAppB
   @override
   AppLocalizations get l10n => _l10n;
 
+  @override
+  ValueNotifier<bool> get showCancelButton => model.showCancelButton;
+
   Timer? _debounceTimer;
-  CancelableOperation<String>? _cancelableCitiesLoader;
+  CancelableOperation<String>? _cancelableRequest;
 
   SearchAppBarWidgetModel({
     required SearchAppBarModel model,
@@ -47,20 +51,23 @@ class SearchAppBarWidgetModel extends WidgetModel<SearchAppBarWidget, SearchAppB
   @override
   void dispose() {
     _debounceTimer?.cancel();
-    _cancelableCitiesLoader?.cancel();
+    _cancelableRequest?.cancel();
     _searchFieldController.removeListener(_controllerListener);
     super.dispose();
   }
 
   @override
   void onCancelPressed() {
+    _debounceTimer?.cancel();
     searchFieldController.text = '';
     model.resetSearch();
   }
 
   void _controllerListener() {
-    _cancelableCitiesLoader?.cancel();
-    _cancelableCitiesLoader = null;
+    _cancelableRequest?.cancel();
+    _cancelableRequest = null;
+
+    model.changeCancelButtonVisibility(searchFieldController.text.isNotEmpty);
 
     _debounceTimer?.cancel();
     _debounceTimer = _getDebounceEventsLoader(searchFieldController.text);
@@ -70,14 +77,14 @@ class SearchAppBarWidgetModel extends WidgetModel<SearchAppBarWidget, SearchAppB
     return Timer(
       const Duration(seconds: 1),
       () {
-        final cancelableCitiesLoader = _getCancelableEventLoader(request)
+        final cancelableRequest = _getCancelableEventLoader(request)
           ..then((searchRequest) {
-            _cancelableCitiesLoader = null;
+            _cancelableRequest = null;
             if (searchRequest != '') {
               model.searchForEvents(searchRequest);
             }
           });
-        _cancelableCitiesLoader = cancelableCitiesLoader;
+        _cancelableRequest = cancelableRequest;
       },
     );
   }
@@ -96,6 +103,9 @@ abstract class ISearchAppBarWidgetModel extends IWidgetModel {
 
   /// Localization
   AppLocalizations get l10n;
+
+  /// If to show cancel button in text field
+  ValueNotifier<bool> get showCancelButton;
 
   /// Action of Cancel button
   void onCancelPressed();
