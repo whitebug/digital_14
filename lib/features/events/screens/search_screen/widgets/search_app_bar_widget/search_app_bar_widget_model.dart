@@ -55,6 +55,7 @@ class SearchAppBarWidgetModel extends WidgetModel<SearchAppBarWidget, SearchAppB
   @override
   void onCancelPressed() {
     searchFieldController.text = '';
+    model.resetSearch();
   }
 
   void _controllerListener() {
@@ -67,7 +68,7 @@ class SearchAppBarWidgetModel extends WidgetModel<SearchAppBarWidget, SearchAppB
 
   Timer _getDebounceEventsLoader(String request) {
     return Timer(
-      const Duration(seconds: 2),
+      const Duration(seconds: 1),
       () {
         final cancelableCitiesLoader = _getCancelableEventLoader(request)
           ..then((searchRequest) {

@@ -8,7 +8,7 @@ class EventsState with _$EventsState {
     @Default(1) int page,
     @Default(10) int perPage,
     MetaModel? metaModel,
-    String? error,
+    dynamic error,
     int? nextPage,
   }) = EventsListState;
 }

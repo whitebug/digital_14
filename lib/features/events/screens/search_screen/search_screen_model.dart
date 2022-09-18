@@ -20,6 +20,6 @@ class SearchScreenModel extends ElementaryModel {
 
   /// Get events of a [page] or if it's null - the next page
   void turnPage({int? page}) {
-    _eventsBloc.add(EventsEvent.turnPage(page: page));
+    _eventsBloc.add(EventsListEvent.turnPage(page: page));
   }
 }

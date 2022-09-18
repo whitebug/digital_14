@@ -15,24 +15,27 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$EventsEvent {
+mixin _$EventsListEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String searchRequest, int page, int perPage)
         getEvents,
     required TResult Function(int? page) turnPage,
+    required TResult Function() reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
     TResult Function(int? page)? turnPage,
+    TResult Function()? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
     TResult Function(int? page)? turnPage,
+    TResult Function()? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -40,37 +43,41 @@ mixin _$EventsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEventsEvent value) getEvents,
     required TResult Function(_TurnPageEvent value) turnPage,
+    required TResult Function(_ResetEvent value) reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
     TResult Function(_TurnPageEvent value)? turnPage,
+    TResult Function(_ResetEvent value)? reset,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
     TResult Function(_TurnPageEvent value)? turnPage,
+    TResult Function(_ResetEvent value)? reset,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EventsEventCopyWith<$Res> {
-  factory $EventsEventCopyWith(
-          EventsEvent value, $Res Function(EventsEvent) then) =
-      _$EventsEventCopyWithImpl<$Res>;
+abstract class $EventsListEventCopyWith<$Res> {
+  factory $EventsListEventCopyWith(
+          EventsListEvent value, $Res Function(EventsListEvent) then) =
+      _$EventsListEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EventsEventCopyWithImpl<$Res> implements $EventsEventCopyWith<$Res> {
-  _$EventsEventCopyWithImpl(this._value, this._then);
+class _$EventsListEventCopyWithImpl<$Res>
+    implements $EventsListEventCopyWith<$Res> {
+  _$EventsListEventCopyWithImpl(this._value, this._then);
 
-  final EventsEvent _value;
+  final EventsListEvent _value;
   // ignore: unused_field
-  final $Res Function(EventsEvent) _then;
+  final $Res Function(EventsListEvent) _then;
 }
 
 /// @nodoc
@@ -83,7 +90,7 @@ abstract class _$$_GetEventsEventCopyWith<$Res> {
 
 /// @nodoc
 class __$$_GetEventsEventCopyWithImpl<$Res>
-    extends _$EventsEventCopyWithImpl<$Res>
+    extends _$EventsListEventCopyWithImpl<$Res>
     implements _$$_GetEventsEventCopyWith<$Res> {
   __$$_GetEventsEventCopyWithImpl(
       _$_GetEventsEvent _value, $Res Function(_$_GetEventsEvent) _then)
@@ -132,7 +139,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
 
   @override
   String toString() {
-    return 'EventsEvent.getEvents(searchRequest: $searchRequest, page: $page, perPage: $perPage)';
+    return 'EventsListEvent.getEvents(searchRequest: $searchRequest, page: $page, perPage: $perPage)';
   }
 
   @override
@@ -164,6 +171,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
     required TResult Function(String searchRequest, int page, int perPage)
         getEvents,
     required TResult Function(int? page) turnPage,
+    required TResult Function() reset,
   }) {
     return getEvents(searchRequest, page, perPage);
   }
@@ -173,6 +181,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
     TResult Function(int? page)? turnPage,
+    TResult Function()? reset,
   }) {
     return getEvents?.call(searchRequest, page, perPage);
   }
@@ -182,6 +191,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
     TResult Function(int? page)? turnPage,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (getEvents != null) {
@@ -195,6 +205,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEventsEvent value) getEvents,
     required TResult Function(_TurnPageEvent value) turnPage,
+    required TResult Function(_ResetEvent value) reset,
   }) {
     return getEvents(this);
   }
@@ -204,6 +215,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
     TResult Function(_TurnPageEvent value)? turnPage,
+    TResult Function(_ResetEvent value)? reset,
   }) {
     return getEvents?.call(this);
   }
@@ -213,6 +225,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
     TResult Function(_TurnPageEvent value)? turnPage,
+    TResult Function(_ResetEvent value)? reset,
     required TResult orElse(),
   }) {
     if (getEvents != null) {
@@ -222,7 +235,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
   }
 }
 
-abstract class _GetEventsEvent implements EventsEvent {
+abstract class _GetEventsEvent implements EventsListEvent {
   const factory _GetEventsEvent(
       {required final String searchRequest,
       final int page,
@@ -246,7 +259,7 @@ abstract class _$$_TurnPageEventCopyWith<$Res> {
 
 /// @nodoc
 class __$$_TurnPageEventCopyWithImpl<$Res>
-    extends _$EventsEventCopyWithImpl<$Res>
+    extends _$EventsListEventCopyWithImpl<$Res>
     implements _$$_TurnPageEventCopyWith<$Res> {
   __$$_TurnPageEventCopyWithImpl(
       _$_TurnPageEvent _value, $Res Function(_$_TurnPageEvent) _then)
@@ -278,7 +291,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
 
   @override
   String toString() {
-    return 'EventsEvent.turnPage(page: $page)';
+    return 'EventsListEvent.turnPage(page: $page)';
   }
 
   @override
@@ -304,6 +317,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
     required TResult Function(String searchRequest, int page, int perPage)
         getEvents,
     required TResult Function(int? page) turnPage,
+    required TResult Function() reset,
   }) {
     return turnPage(page);
   }
@@ -313,6 +327,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
     TResult Function(int? page)? turnPage,
+    TResult Function()? reset,
   }) {
     return turnPage?.call(page);
   }
@@ -322,6 +337,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
     TResult Function(int? page)? turnPage,
+    TResult Function()? reset,
     required TResult orElse(),
   }) {
     if (turnPage != null) {
@@ -335,6 +351,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEventsEvent value) getEvents,
     required TResult Function(_TurnPageEvent value) turnPage,
+    required TResult Function(_ResetEvent value) reset,
   }) {
     return turnPage(this);
   }
@@ -344,6 +361,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
     TResult Function(_TurnPageEvent value)? turnPage,
+    TResult Function(_ResetEvent value)? reset,
   }) {
     return turnPage?.call(this);
   }
@@ -353,6 +371,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
     TResult Function(_TurnPageEvent value)? turnPage,
+    TResult Function(_ResetEvent value)? reset,
     required TResult orElse(),
   }) {
     if (turnPage != null) {
@@ -362,7 +381,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
   }
 }
 
-abstract class _TurnPageEvent implements EventsEvent {
+abstract class _TurnPageEvent implements EventsListEvent {
   const factory _TurnPageEvent({final int? page}) = _$_TurnPageEvent;
 
   int? get page;
@@ -372,13 +391,125 @@ abstract class _TurnPageEvent implements EventsEvent {
 }
 
 /// @nodoc
+abstract class _$$_ResetEventCopyWith<$Res> {
+  factory _$$_ResetEventCopyWith(
+          _$_ResetEvent value, $Res Function(_$_ResetEvent) then) =
+      __$$_ResetEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ResetEventCopyWithImpl<$Res>
+    extends _$EventsListEventCopyWithImpl<$Res>
+    implements _$$_ResetEventCopyWith<$Res> {
+  __$$_ResetEventCopyWithImpl(
+      _$_ResetEvent _value, $Res Function(_$_ResetEvent) _then)
+      : super(_value, (v) => _then(v as _$_ResetEvent));
+
+  @override
+  _$_ResetEvent get _value => super._value as _$_ResetEvent;
+}
+
+/// @nodoc
+
+class _$_ResetEvent implements _ResetEvent {
+  const _$_ResetEvent();
+
+  @override
+  String toString() {
+    return 'EventsListEvent.reset()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ResetEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String searchRequest, int page, int perPage)
+        getEvents,
+    required TResult Function(int? page) turnPage,
+    required TResult Function() reset,
+  }) {
+    return reset();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(int? page)? turnPage,
+    TResult Function()? reset,
+  }) {
+    return reset?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(int? page)? turnPage,
+    TResult Function()? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetEventsEvent value) getEvents,
+    required TResult Function(_TurnPageEvent value) turnPage,
+    required TResult Function(_ResetEvent value) reset,
+  }) {
+    return reset(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_TurnPageEvent value)? turnPage,
+    TResult Function(_ResetEvent value)? reset,
+  }) {
+    return reset?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_TurnPageEvent value)? turnPage,
+    TResult Function(_ResetEvent value)? reset,
+    required TResult orElse(),
+  }) {
+    if (reset != null) {
+      return reset(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ResetEvent implements EventsListEvent {
+  const factory _ResetEvent() = _$_ResetEvent;
+}
+
+/// @nodoc
 mixin _$EventsState {
   String get searchRequest => throw _privateConstructorUsedError;
   List<EventModel>? get eventsList => throw _privateConstructorUsedError;
   int get page => throw _privateConstructorUsedError;
   int get perPage => throw _privateConstructorUsedError;
   MetaModel? get metaModel => throw _privateConstructorUsedError;
-  String? get error => throw _privateConstructorUsedError;
+  dynamic get error => throw _privateConstructorUsedError;
   int? get nextPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -397,7 +528,7 @@ abstract class $EventsStateCopyWith<$Res> {
       int page,
       int perPage,
       MetaModel? metaModel,
-      String? error,
+      dynamic error,
       int? nextPage});
 }
 
@@ -443,7 +574,7 @@ class _$EventsStateCopyWithImpl<$Res> implements $EventsStateCopyWith<$Res> {
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       nextPage: nextPage == freezed
           ? _value.nextPage
           : nextPage // ignore: cast_nullable_to_non_nullable
@@ -465,7 +596,7 @@ abstract class _$$EventsListStateCopyWith<$Res>
       int page,
       int perPage,
       MetaModel? metaModel,
-      String? error,
+      dynamic error,
       int? nextPage});
 }
 
@@ -514,7 +645,7 @@ class __$$EventsListStateCopyWithImpl<$Res>
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as dynamic,
       nextPage: nextPage == freezed
           ? _value.nextPage
           : nextPage // ignore: cast_nullable_to_non_nullable
@@ -557,7 +688,7 @@ class _$EventsListState implements EventsListState {
   @override
   final MetaModel? metaModel;
   @override
-  final String? error;
+  final dynamic error;
   @override
   final int? nextPage;
 
@@ -606,7 +737,7 @@ abstract class EventsListState implements EventsState {
       final int page,
       final int perPage,
       final MetaModel? metaModel,
-      final String? error,
+      final dynamic error,
       final int? nextPage}) = _$EventsListState;
 
   @override
@@ -620,7 +751,7 @@ abstract class EventsListState implements EventsState {
   @override
   MetaModel? get metaModel;
   @override
-  String? get error;
+  dynamic get error;
   @override
   int? get nextPage;
   @override

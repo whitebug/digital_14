@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:digital_14/features/server/domain/domain.dart';
 import 'package:digital_14/features/server/events/events_client.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -64,7 +66,6 @@ class MockRepository implements IEventsRepository {
 
     final part1 = mockEventList.sublist(0, perPage);
     final part2 = mockEventList.sublist(perPage, perPage * 2);
-    final part3 = mockEventList.sublist(perPage * 2, perPage * 2 + 4);
     switch (page) {
       case 1:
         return Future.delayed(const Duration(seconds: 1)).then(
@@ -82,10 +83,7 @@ class MockRepository implements IEventsRepository {
         );
       case 3:
         return Future.delayed(const Duration(seconds: 1)).then(
-              (value) => EventResponseModel(
-            events: part3,
-            metaModel: MetaModel(),
-          ),
+              (value) => throw const HttpException('exception'),
         );
       default:
         return Future.delayed(const Duration(seconds: 1)).then(

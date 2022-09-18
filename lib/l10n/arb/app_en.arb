@@ -8,16 +8,20 @@
   "@loading": {
     "description": "Loading screen text"
   },
-  "error": "Error",
-  "@error": {
-    "description": "Error text"
-  },
   "tryAgain": "Please try again later",
   "@tryAgain": {
     "description": "Error handling instructions"
   },
-  "tryAgainButton": "Try again",
+  "tryAgainButton": "Tap to try again",
   "@tryAgainButton": {
     "description": "Try again button text"
+  },
+  "nothingToShow": "Please type something in search field to find events",
+  "@nothingToShow": {
+    "description": "Text on empty result"
+  },
+  "errorNeedRefresh": "Something went wrong",
+  "@errorNeedRefresh": {
+    "description": "Error message with instruction"
   }
 }

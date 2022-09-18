@@ -10,12 +10,13 @@ part 'events_state.dart';
 part 'events_bloc.freezed.dart';
 
 /// Bloc for manipulating with events and search requests
-class EventsBloc extends Bloc<EventsEvent, EventsState> {
+class EventsBloc extends Bloc<EventsListEvent, EventsState> {
   final IEventsRepository _eventsRepository;
 
   EventsBloc(this._eventsRepository) : super(const EventsState()) {
     on<_GetEventsEvent>(_onGetEvents);
     on<_TurnPageEvent>(_onTurnPage);
+    on<_ResetEvent>(_onReset);
   }
 
   Future<void> _onGetEvents(
@@ -34,7 +35,8 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
       final int currentPage = meta.page ?? event.page;
       final isLastPage = newEvents.length < perPage;
       final nextPage = isLastPage ? null : currentPage + 1;
-      final List<EventModel> allEvents = [...state.eventsList ?? [], ...newEvents];
+      final List<EventModel> oldEvents = state.eventsList ?? [];
+      final List<EventModel> allEvents = [...oldEvents, ...newEvents];
       emit(EventsState(
         eventsList: allEvents,
         page: event.page,
@@ -42,13 +44,8 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
         nextPage: nextPage,
         metaModel: meta,
       ));
-    } catch (e) {
-      emit(EventsState(
-        error: e.toString(),
-        eventsList: state.eventsList,
-        page: state.page,
-        perPage: state.perPage,
-      ));
+    } catch (error) {
+      emit(state.copyWith(error: error));
     }
   }
 
@@ -56,9 +53,17 @@ class EventsBloc extends Bloc<EventsEvent, EventsState> {
     _TurnPageEvent event,
     Emitter<EventsState> emit,
   ) {
-    add(EventsEvent.getEvents(
+    final int nextPage = event.page ?? state.nextPage ?? 1;
+    add(EventsListEvent.getEvents(
       searchRequest: state.searchRequest,
-      page: event.page ?? state.nextPage ?? 1,
+      page: nextPage,
     ));
+  }
+
+  void _onReset(
+    _ResetEvent event,
+    Emitter<EventsState> emit,
+  ) {
+    emit(const EventsState());
   }
 }

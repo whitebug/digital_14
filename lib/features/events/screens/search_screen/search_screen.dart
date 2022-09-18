@@ -6,6 +6,8 @@ import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
+import 'widgets/indicators/indicators.dart';
+
 /// Widget screen with search results and search field app bar.
 class SearchScreen extends ElementaryWidget<ISearchScreenWidgetModel> {
   /// Create an instance [PlaceResidenceScreen].
@@ -24,16 +26,34 @@ class SearchScreen extends ElementaryWidget<ISearchScreenWidgetModel> {
       ),
       body: PagedListView<int, EventModel>(
         pagingController: wm.pagingController,
-        builderDelegate: PagedChildBuilderDelegate<EventModel>(itemBuilder: (context, item, index) {
-          return SizedBox(
-            height: 100.0,
-            child: Center(
-              child: Text(
-                item.title ?? 'no title',
+        builderDelegate: PagedChildBuilderDelegate<EventModel>(
+          itemBuilder: (context, item, index) {
+            return SizedBox(
+              height: 100.0,
+              child: Center(
+                child: Text(
+                  item.title ?? 'no title',
+                ),
               ),
-            ),
-          );
-        }),
+            );
+          },
+          firstPageErrorIndicatorBuilder: (_) => FirstPageErrorIndicator(
+            title: wm.l10n.errorNeedRefresh,
+            buttonTitle: wm.l10n.tryAgainButton,
+            onTryAgain: wm.pagingController.retryLastFailedRequest,
+          ),
+          newPageErrorIndicatorBuilder: (_) {
+            return NewPageErrorIndicator(
+              title: '${wm.l10n.errorNeedRefresh}. ${wm.l10n.tryAgainButton}',
+              onRefresh: wm.pagingController.retryLastFailedRequest,
+            );
+          },
+          firstPageProgressIndicatorBuilder: (_) => const FirstPageProgressIndicator(),
+          newPageProgressIndicatorBuilder: (_) => const NewPageProgressIndicator(),
+          noItemsFoundIndicatorBuilder: (_) => NoItemsFoundIndicator(
+            text: wm.l10n.nothingToShow,
+          ),
+        ),
       ),
     );
   }
