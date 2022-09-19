@@ -5,9 +5,14 @@ class EventsListEvent with _$EventsListEvent {
   /// Getting events that fits to [searchRequest]
   const factory EventsListEvent.getEvents({
     required String searchRequest,
-    @Default(defaultFirstPage) int page,
-    @Default(10) int perPage,
+    required int page,
+    required int perPage,
   }) = _GetEventsEvent;
+
+  /// Get search request
+  const factory EventsListEvent.search({
+    required String searchRequest,
+  }) = _SearchEvent;
 
   /// Get the next page with the same search request
   const factory EventsListEvent.turnPage({

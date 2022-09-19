@@ -20,6 +20,7 @@ mixin _$EventsListEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String searchRequest, int page, int perPage)
         getEvents,
+    required TResult Function(String searchRequest) search,
     required TResult Function(int? page) turnPage,
     required TResult Function() reset,
     required TResult Function(EventModel eventModel, bool favorite) favorite,
@@ -28,6 +29,7 @@ mixin _$EventsListEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(String searchRequest)? search,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
     TResult Function(EventModel eventModel, bool favorite)? favorite,
@@ -36,6 +38,7 @@ mixin _$EventsListEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(String searchRequest)? search,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
     TResult Function(EventModel eventModel, bool favorite)? favorite,
@@ -45,6 +48,7 @@ mixin _$EventsListEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEventsEvent value) getEvents,
+    required TResult Function(_SearchEvent value) search,
     required TResult Function(_TurnPageEvent value) turnPage,
     required TResult Function(_ResetEvent value) reset,
     required TResult Function(_FavoriteEvent value) favorite,
@@ -53,6 +57,7 @@ mixin _$EventsListEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_SearchEvent value)? search,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
     TResult Function(_FavoriteEvent value)? favorite,
@@ -61,6 +66,7 @@ mixin _$EventsListEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_SearchEvent value)? search,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
     TResult Function(_FavoriteEvent value)? favorite,
@@ -132,17 +138,13 @@ class __$$_GetEventsEventCopyWithImpl<$Res>
 
 class _$_GetEventsEvent implements _GetEventsEvent {
   const _$_GetEventsEvent(
-      {required this.searchRequest,
-      this.page = defaultFirstPage,
-      this.perPage = 10});
+      {required this.searchRequest, required this.page, required this.perPage});
 
   @override
   final String searchRequest;
   @override
-  @JsonKey()
   final int page;
   @override
-  @JsonKey()
   final int perPage;
 
   @override
@@ -178,6 +180,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String searchRequest, int page, int perPage)
         getEvents,
+    required TResult Function(String searchRequest) search,
     required TResult Function(int? page) turnPage,
     required TResult Function() reset,
     required TResult Function(EventModel eventModel, bool favorite) favorite,
@@ -189,6 +192,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(String searchRequest)? search,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
     TResult Function(EventModel eventModel, bool favorite)? favorite,
@@ -200,6 +204,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(String searchRequest)? search,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
     TResult Function(EventModel eventModel, bool favorite)? favorite,
@@ -215,6 +220,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEventsEvent value) getEvents,
+    required TResult Function(_SearchEvent value) search,
     required TResult Function(_TurnPageEvent value) turnPage,
     required TResult Function(_ResetEvent value) reset,
     required TResult Function(_FavoriteEvent value) favorite,
@@ -226,6 +232,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_SearchEvent value)? search,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
     TResult Function(_FavoriteEvent value)? favorite,
@@ -237,6 +244,7 @@ class _$_GetEventsEvent implements _GetEventsEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_SearchEvent value)? search,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
     TResult Function(_FavoriteEvent value)? favorite,
@@ -252,14 +260,169 @@ class _$_GetEventsEvent implements _GetEventsEvent {
 abstract class _GetEventsEvent implements EventsListEvent {
   const factory _GetEventsEvent(
       {required final String searchRequest,
-      final int page,
-      final int perPage}) = _$_GetEventsEvent;
+      required final int page,
+      required final int perPage}) = _$_GetEventsEvent;
 
   String get searchRequest;
   int get page;
   int get perPage;
   @JsonKey(ignore: true)
   _$$_GetEventsEventCopyWith<_$_GetEventsEvent> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SearchEventCopyWith<$Res> {
+  factory _$$_SearchEventCopyWith(
+          _$_SearchEvent value, $Res Function(_$_SearchEvent) then) =
+      __$$_SearchEventCopyWithImpl<$Res>;
+  $Res call({String searchRequest});
+}
+
+/// @nodoc
+class __$$_SearchEventCopyWithImpl<$Res>
+    extends _$EventsListEventCopyWithImpl<$Res>
+    implements _$$_SearchEventCopyWith<$Res> {
+  __$$_SearchEventCopyWithImpl(
+      _$_SearchEvent _value, $Res Function(_$_SearchEvent) _then)
+      : super(_value, (v) => _then(v as _$_SearchEvent));
+
+  @override
+  _$_SearchEvent get _value => super._value as _$_SearchEvent;
+
+  @override
+  $Res call({
+    Object? searchRequest = freezed,
+  }) {
+    return _then(_$_SearchEvent(
+      searchRequest: searchRequest == freezed
+          ? _value.searchRequest
+          : searchRequest // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SearchEvent implements _SearchEvent {
+  const _$_SearchEvent({required this.searchRequest});
+
+  @override
+  final String searchRequest;
+
+  @override
+  String toString() {
+    return 'EventsListEvent.search(searchRequest: $searchRequest)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SearchEvent &&
+            const DeepCollectionEquality()
+                .equals(other.searchRequest, searchRequest));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(searchRequest));
+
+  @JsonKey(ignore: true)
+  @override
+  _$$_SearchEventCopyWith<_$_SearchEvent> get copyWith =>
+      __$$_SearchEventCopyWithImpl<_$_SearchEvent>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String searchRequest, int page, int perPage)
+        getEvents,
+    required TResult Function(String searchRequest) search,
+    required TResult Function(int? page) turnPage,
+    required TResult Function() reset,
+    required TResult Function(EventModel eventModel, bool favorite) favorite,
+  }) {
+    return search(searchRequest);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(String searchRequest)? search,
+    TResult Function(int? page)? turnPage,
+    TResult Function()? reset,
+    TResult Function(EventModel eventModel, bool favorite)? favorite,
+  }) {
+    return search?.call(searchRequest);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(String searchRequest)? search,
+    TResult Function(int? page)? turnPage,
+    TResult Function()? reset,
+    TResult Function(EventModel eventModel, bool favorite)? favorite,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(searchRequest);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetEventsEvent value) getEvents,
+    required TResult Function(_SearchEvent value) search,
+    required TResult Function(_TurnPageEvent value) turnPage,
+    required TResult Function(_ResetEvent value) reset,
+    required TResult Function(_FavoriteEvent value) favorite,
+  }) {
+    return search(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_SearchEvent value)? search,
+    TResult Function(_TurnPageEvent value)? turnPage,
+    TResult Function(_ResetEvent value)? reset,
+    TResult Function(_FavoriteEvent value)? favorite,
+  }) {
+    return search?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_SearchEvent value)? search,
+    TResult Function(_TurnPageEvent value)? turnPage,
+    TResult Function(_ResetEvent value)? reset,
+    TResult Function(_FavoriteEvent value)? favorite,
+    required TResult orElse(),
+  }) {
+    if (search != null) {
+      return search(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SearchEvent implements EventsListEvent {
+  const factory _SearchEvent({required final String searchRequest}) =
+      _$_SearchEvent;
+
+  String get searchRequest;
+  @JsonKey(ignore: true)
+  _$$_SearchEventCopyWith<_$_SearchEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -330,6 +493,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String searchRequest, int page, int perPage)
         getEvents,
+    required TResult Function(String searchRequest) search,
     required TResult Function(int? page) turnPage,
     required TResult Function() reset,
     required TResult Function(EventModel eventModel, bool favorite) favorite,
@@ -341,6 +505,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(String searchRequest)? search,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
     TResult Function(EventModel eventModel, bool favorite)? favorite,
@@ -352,6 +517,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(String searchRequest)? search,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
     TResult Function(EventModel eventModel, bool favorite)? favorite,
@@ -367,6 +533,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEventsEvent value) getEvents,
+    required TResult Function(_SearchEvent value) search,
     required TResult Function(_TurnPageEvent value) turnPage,
     required TResult Function(_ResetEvent value) reset,
     required TResult Function(_FavoriteEvent value) favorite,
@@ -378,6 +545,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_SearchEvent value)? search,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
     TResult Function(_FavoriteEvent value)? favorite,
@@ -389,6 +557,7 @@ class _$_TurnPageEvent implements _TurnPageEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_SearchEvent value)? search,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
     TResult Function(_FavoriteEvent value)? favorite,
@@ -453,6 +622,7 @@ class _$_ResetEvent implements _ResetEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String searchRequest, int page, int perPage)
         getEvents,
+    required TResult Function(String searchRequest) search,
     required TResult Function(int? page) turnPage,
     required TResult Function() reset,
     required TResult Function(EventModel eventModel, bool favorite) favorite,
@@ -464,6 +634,7 @@ class _$_ResetEvent implements _ResetEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(String searchRequest)? search,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
     TResult Function(EventModel eventModel, bool favorite)? favorite,
@@ -475,6 +646,7 @@ class _$_ResetEvent implements _ResetEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(String searchRequest)? search,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
     TResult Function(EventModel eventModel, bool favorite)? favorite,
@@ -490,6 +662,7 @@ class _$_ResetEvent implements _ResetEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEventsEvent value) getEvents,
+    required TResult Function(_SearchEvent value) search,
     required TResult Function(_TurnPageEvent value) turnPage,
     required TResult Function(_ResetEvent value) reset,
     required TResult Function(_FavoriteEvent value) favorite,
@@ -501,6 +674,7 @@ class _$_ResetEvent implements _ResetEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_SearchEvent value)? search,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
     TResult Function(_FavoriteEvent value)? favorite,
@@ -512,6 +686,7 @@ class _$_ResetEvent implements _ResetEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_SearchEvent value)? search,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
     TResult Function(_FavoriteEvent value)? favorite,
@@ -606,6 +781,7 @@ class _$_FavoriteEvent implements _FavoriteEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(String searchRequest, int page, int perPage)
         getEvents,
+    required TResult Function(String searchRequest) search,
     required TResult Function(int? page) turnPage,
     required TResult Function() reset,
     required TResult Function(EventModel eventModel, bool favorite) favorite,
@@ -617,6 +793,7 @@ class _$_FavoriteEvent implements _FavoriteEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(String searchRequest)? search,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
     TResult Function(EventModel eventModel, bool favorite)? favorite,
@@ -628,6 +805,7 @@ class _$_FavoriteEvent implements _FavoriteEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String searchRequest, int page, int perPage)? getEvents,
+    TResult Function(String searchRequest)? search,
     TResult Function(int? page)? turnPage,
     TResult Function()? reset,
     TResult Function(EventModel eventModel, bool favorite)? favorite,
@@ -643,6 +821,7 @@ class _$_FavoriteEvent implements _FavoriteEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetEventsEvent value) getEvents,
+    required TResult Function(_SearchEvent value) search,
     required TResult Function(_TurnPageEvent value) turnPage,
     required TResult Function(_ResetEvent value) reset,
     required TResult Function(_FavoriteEvent value) favorite,
@@ -654,6 +833,7 @@ class _$_FavoriteEvent implements _FavoriteEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_SearchEvent value)? search,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
     TResult Function(_FavoriteEvent value)? favorite,
@@ -665,6 +845,7 @@ class _$_FavoriteEvent implements _FavoriteEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetEventsEvent value)? getEvents,
+    TResult Function(_SearchEvent value)? search,
     TResult Function(_TurnPageEvent value)? turnPage,
     TResult Function(_ResetEvent value)? reset,
     TResult Function(_FavoriteEvent value)? favorite,
@@ -692,12 +873,13 @@ abstract class _FavoriteEvent implements EventsListEvent {
 /// @nodoc
 mixin _$EventsState {
   String get searchRequest => throw _privateConstructorUsedError;
-  List<EventModel>? get eventsList => throw _privateConstructorUsedError;
   int get page => throw _privateConstructorUsedError;
   int get perPage => throw _privateConstructorUsedError;
+  int get nextPage => throw _privateConstructorUsedError;
+  List<EventModel>? get eventsList => throw _privateConstructorUsedError;
   MetaModel? get metaModel => throw _privateConstructorUsedError;
   dynamic get error => throw _privateConstructorUsedError;
-  int? get nextPage => throw _privateConstructorUsedError;
+  bool? get favoriteUpdate => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $EventsStateCopyWith<EventsState> get copyWith =>
@@ -711,12 +893,13 @@ abstract class $EventsStateCopyWith<$Res> {
       _$EventsStateCopyWithImpl<$Res>;
   $Res call(
       {String searchRequest,
-      List<EventModel>? eventsList,
       int page,
       int perPage,
+      int nextPage,
+      List<EventModel>? eventsList,
       MetaModel? metaModel,
       dynamic error,
-      int? nextPage});
+      bool? favoriteUpdate});
 }
 
 /// @nodoc
@@ -730,22 +913,19 @@ class _$EventsStateCopyWithImpl<$Res> implements $EventsStateCopyWith<$Res> {
   @override
   $Res call({
     Object? searchRequest = freezed,
-    Object? eventsList = freezed,
     Object? page = freezed,
     Object? perPage = freezed,
+    Object? nextPage = freezed,
+    Object? eventsList = freezed,
     Object? metaModel = freezed,
     Object? error = freezed,
-    Object? nextPage = freezed,
+    Object? favoriteUpdate = freezed,
   }) {
     return _then(_value.copyWith(
       searchRequest: searchRequest == freezed
           ? _value.searchRequest
           : searchRequest // ignore: cast_nullable_to_non_nullable
               as String,
-      eventsList: eventsList == freezed
-          ? _value.eventsList
-          : eventsList // ignore: cast_nullable_to_non_nullable
-              as List<EventModel>?,
       page: page == freezed
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
@@ -754,6 +934,14 @@ class _$EventsStateCopyWithImpl<$Res> implements $EventsStateCopyWith<$Res> {
           ? _value.perPage
           : perPage // ignore: cast_nullable_to_non_nullable
               as int,
+      nextPage: nextPage == freezed
+          ? _value.nextPage
+          : nextPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      eventsList: eventsList == freezed
+          ? _value.eventsList
+          : eventsList // ignore: cast_nullable_to_non_nullable
+              as List<EventModel>?,
       metaModel: metaModel == freezed
           ? _value.metaModel
           : metaModel // ignore: cast_nullable_to_non_nullable
@@ -762,10 +950,10 @@ class _$EventsStateCopyWithImpl<$Res> implements $EventsStateCopyWith<$Res> {
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      nextPage: nextPage == freezed
-          ? _value.nextPage
-          : nextPage // ignore: cast_nullable_to_non_nullable
-              as int?,
+      favoriteUpdate: favoriteUpdate == freezed
+          ? _value.favoriteUpdate
+          : favoriteUpdate // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -779,12 +967,13 @@ abstract class _$$EventsListStateCopyWith<$Res>
   @override
   $Res call(
       {String searchRequest,
-      List<EventModel>? eventsList,
       int page,
       int perPage,
+      int nextPage,
+      List<EventModel>? eventsList,
       MetaModel? metaModel,
       dynamic error,
-      int? nextPage});
+      bool? favoriteUpdate});
 }
 
 /// @nodoc
@@ -801,22 +990,19 @@ class __$$EventsListStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? searchRequest = freezed,
-    Object? eventsList = freezed,
     Object? page = freezed,
     Object? perPage = freezed,
+    Object? nextPage = freezed,
+    Object? eventsList = freezed,
     Object? metaModel = freezed,
     Object? error = freezed,
-    Object? nextPage = freezed,
+    Object? favoriteUpdate = freezed,
   }) {
     return _then(_$EventsListState(
       searchRequest: searchRequest == freezed
           ? _value.searchRequest
           : searchRequest // ignore: cast_nullable_to_non_nullable
               as String,
-      eventsList: eventsList == freezed
-          ? _value._eventsList
-          : eventsList // ignore: cast_nullable_to_non_nullable
-              as List<EventModel>?,
       page: page == freezed
           ? _value.page
           : page // ignore: cast_nullable_to_non_nullable
@@ -825,6 +1011,14 @@ class __$$EventsListStateCopyWithImpl<$Res>
           ? _value.perPage
           : perPage // ignore: cast_nullable_to_non_nullable
               as int,
+      nextPage: nextPage == freezed
+          ? _value.nextPage
+          : nextPage // ignore: cast_nullable_to_non_nullable
+              as int,
+      eventsList: eventsList == freezed
+          ? _value._eventsList
+          : eventsList // ignore: cast_nullable_to_non_nullable
+              as List<EventModel>?,
       metaModel: metaModel == freezed
           ? _value.metaModel
           : metaModel // ignore: cast_nullable_to_non_nullable
@@ -833,10 +1027,10 @@ class __$$EventsListStateCopyWithImpl<$Res>
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      nextPage: nextPage == freezed
-          ? _value.nextPage
-          : nextPage // ignore: cast_nullable_to_non_nullable
-              as int?,
+      favoriteUpdate: favoriteUpdate == freezed
+          ? _value.favoriteUpdate
+          : favoriteUpdate // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -845,18 +1039,24 @@ class __$$EventsListStateCopyWithImpl<$Res>
 
 class _$EventsListState implements EventsListState {
   const _$EventsListState(
-      {this.searchRequest = '',
+      {required this.searchRequest,
+      required this.page,
+      required this.perPage,
+      required this.nextPage,
       final List<EventModel>? eventsList,
-      this.page = defaultFirstPage,
-      this.perPage = 10,
       this.metaModel,
       this.error,
-      this.nextPage})
+      this.favoriteUpdate})
       : _eventsList = eventsList;
 
   @override
-  @JsonKey()
   final String searchRequest;
+  @override
+  final int page;
+  @override
+  final int perPage;
+  @override
+  final int nextPage;
   final List<EventModel>? _eventsList;
   @override
   List<EventModel>? get eventsList {
@@ -867,21 +1067,15 @@ class _$EventsListState implements EventsListState {
   }
 
   @override
-  @JsonKey()
-  final int page;
-  @override
-  @JsonKey()
-  final int perPage;
-  @override
   final MetaModel? metaModel;
   @override
   final dynamic error;
   @override
-  final int? nextPage;
+  final bool? favoriteUpdate;
 
   @override
   String toString() {
-    return 'EventsState(searchRequest: $searchRequest, eventsList: $eventsList, page: $page, perPage: $perPage, metaModel: $metaModel, error: $error, nextPage: $nextPage)';
+    return 'EventsState(searchRequest: $searchRequest, page: $page, perPage: $perPage, nextPage: $nextPage, eventsList: $eventsList, metaModel: $metaModel, error: $error, favoriteUpdate: $favoriteUpdate)';
   }
 
   @override
@@ -891,25 +1085,28 @@ class _$EventsListState implements EventsListState {
             other is _$EventsListState &&
             const DeepCollectionEquality()
                 .equals(other.searchRequest, searchRequest) &&
-            const DeepCollectionEquality()
-                .equals(other._eventsList, _eventsList) &&
             const DeepCollectionEquality().equals(other.page, page) &&
             const DeepCollectionEquality().equals(other.perPage, perPage) &&
+            const DeepCollectionEquality().equals(other.nextPage, nextPage) &&
+            const DeepCollectionEquality()
+                .equals(other._eventsList, _eventsList) &&
             const DeepCollectionEquality().equals(other.metaModel, metaModel) &&
             const DeepCollectionEquality().equals(other.error, error) &&
-            const DeepCollectionEquality().equals(other.nextPage, nextPage));
+            const DeepCollectionEquality()
+                .equals(other.favoriteUpdate, favoriteUpdate));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(searchRequest),
-      const DeepCollectionEquality().hash(_eventsList),
       const DeepCollectionEquality().hash(page),
       const DeepCollectionEquality().hash(perPage),
+      const DeepCollectionEquality().hash(nextPage),
+      const DeepCollectionEquality().hash(_eventsList),
       const DeepCollectionEquality().hash(metaModel),
       const DeepCollectionEquality().hash(error),
-      const DeepCollectionEquality().hash(nextPage));
+      const DeepCollectionEquality().hash(favoriteUpdate));
 
   @JsonKey(ignore: true)
   @override
@@ -919,28 +1116,31 @@ class _$EventsListState implements EventsListState {
 
 abstract class EventsListState implements EventsState {
   const factory EventsListState(
-      {final String searchRequest,
+      {required final String searchRequest,
+      required final int page,
+      required final int perPage,
+      required final int nextPage,
       final List<EventModel>? eventsList,
-      final int page,
-      final int perPage,
       final MetaModel? metaModel,
       final dynamic error,
-      final int? nextPage}) = _$EventsListState;
+      final bool? favoriteUpdate}) = _$EventsListState;
 
   @override
   String get searchRequest;
-  @override
-  List<EventModel>? get eventsList;
   @override
   int get page;
   @override
   int get perPage;
   @override
+  int get nextPage;
+  @override
+  List<EventModel>? get eventsList;
+  @override
   MetaModel? get metaModel;
   @override
   dynamic get error;
   @override
-  int? get nextPage;
+  bool? get favoriteUpdate;
   @override
   @JsonKey(ignore: true)
   _$$EventsListStateCopyWith<_$EventsListState> get copyWith =>

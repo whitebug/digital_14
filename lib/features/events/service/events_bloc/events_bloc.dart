@@ -11,6 +11,12 @@ part 'events_state.dart';
 part 'events_bloc.freezed.dart';
 
 const String favoriteEventListKey = 'favoriteEventListKey';
+const EventsState initialState = EventsState(
+  searchRequest: '',
+  perPage: defaultPerPage,
+  page: defaultFirstPage,
+  nextPage: defaultFirstPage + 1,
+);
 
 /// Bloc for manipulating with events and search requests
 class EventsBloc extends Bloc<EventsListEvent, EventsState> {
@@ -20,8 +26,9 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
   EventsBloc(
     this._eventsRepository,
     this._helper,
-  ) : super(const EventsState()) {
+  ) : super(initialState) {
     on<_GetEventsEvent>(_onGetEvents);
+    on<_SearchEvent>(_onSearch);
     on<_TurnPageEvent>(_onTurnPage);
     on<_ResetEvent>(_onReset);
     on<_FavoriteEvent>(_onFavorite);
@@ -73,10 +80,10 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
       final bool searchNotChanged = event.searchRequest == state.searchRequest;
       final List<EventModel> newEvents = result.events;
       final MetaModel meta = result.meta;
-      final int perPage = meta.perPage ?? event.perPage;
-      final int currentPage = meta.page ?? event.page;
+      final int perPage = event.perPage;
+      final int currentPage = event.page;
       final isLastPage = newEvents.length < perPage;
-      final nextPage = isLastPage ? null : currentPage + 1;
+      final nextPage = isLastPage ? currentPage : currentPage + 1;
       final List<String> favorites = await _helper.get(favoriteEventListKey) ?? [];
       final List<EventModel> allEvents = _getAllEvents(
         newEvents: newEvents,
@@ -84,9 +91,10 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
         favorites: favorites,
       );
       emit(EventsState(
+        searchRequest: event.searchRequest,
         eventsList: allEvents,
-        page: event.page,
-        perPage: event.perPage,
+        page: currentPage,
+        perPage: perPage,
         nextPage: nextPage,
         metaModel: meta,
       ));
@@ -95,14 +103,27 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
     }
   }
 
+  void _onSearch(
+    _SearchEvent event,
+    Emitter<EventsState> emit,
+  ) {
+    if (state.searchRequest != event.searchRequest) {
+      add(EventsListEvent.getEvents(
+        searchRequest: event.searchRequest,
+        page: defaultFirstPage,
+        perPage: defaultPerPage,
+      ));
+    }
+  }
+
   void _onTurnPage(
     _TurnPageEvent event,
     Emitter<EventsState> emit,
   ) {
-    final int nextPage = event.page ?? state.nextPage ?? defaultFirstPage;
     add(EventsListEvent.getEvents(
       searchRequest: state.searchRequest,
-      page: nextPage,
+      page: state.nextPage,
+      perPage: state.perPage,
     ));
   }
 
@@ -110,7 +131,7 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
     _ResetEvent event,
     Emitter<EventsState> emit,
   ) {
-    emit(const EventsState());
+    emit(initialState);
   }
 
   Future<void> _storeFavorites({
@@ -147,6 +168,10 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
     final ifFavorite = event.eventModel.favorite ?? false;
     // Toggle favorite
     eventsList[index].favorite = !ifFavorite;
-    emit(state.copyWith(eventsList: eventsList));
+    final bool favoriteUpdate = state.favoriteUpdate == true;
+    emit(state.copyWith(
+      eventsList: eventsList,
+      favoriteUpdate: !favoriteUpdate,
+    ));
   }
 }

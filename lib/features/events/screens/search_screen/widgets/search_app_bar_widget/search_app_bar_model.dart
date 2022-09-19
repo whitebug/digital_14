@@ -11,7 +11,7 @@ class SearchAppBarModel extends ElementaryModel {
 
   /// Select events that fits to [searchRequest]
   void searchForEvents(String searchRequest) {
-    _eventsBloc.add(EventsListEvent.getEvents(
+    _eventsBloc.add(EventsListEvent.search(
       searchRequest: searchRequest,
     ));
   }

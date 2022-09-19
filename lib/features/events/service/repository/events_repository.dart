@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:digital_14/features/events/service/events_bloc/events_bloc.dart';
 import 'package:digital_14/features/server/domain/domain.dart';
 import 'package:digital_14/features/server/events/events_client.dart';
 import 'package:dio/dio.dart';
@@ -12,8 +13,8 @@ abstract class IEventsRepository {
   /// Return events list
   Future<EventResponseModel> getEvents({
     required String searchRequest,
-    int? perPage = 10,
-    int? page = 1,
+    required int perPage,
+    required int page,
   });
 }
 
@@ -31,9 +32,15 @@ class EventsRepository implements IEventsRepository {
   @override
   Future<EventResponseModel> getEvents({
     required String searchRequest,
-    int? perPage = 10,
-    int? page = 1,
+    required int perPage,
+    required int page,
   }) async {
+    if (searchRequest.isEmpty) {
+      return EventResponseModel(
+        events: [],
+        meta: MetaModel(),
+      );
+    }
     final Map<String, dynamic> queries = {};
     queries['q'] = searchRequest;
     queries['per_page'] = perPage;
@@ -55,8 +62,8 @@ class MockRepository implements IEventsRepository {
   @override
   Future<EventResponseModel> getEvents({
     required String searchRequest,
-    int? perPage = 10,
-    int? page = 1,
+    int? perPage = defaultPerPage,
+    int? page = defaultFirstPage,
   }) {
     if (perPage == null) {
       return Future.delayed(const Duration(seconds: 1)).then(
