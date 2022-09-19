@@ -877,7 +877,6 @@ mixin _$EventsState {
   int get perPage => throw _privateConstructorUsedError;
   int get nextPage => throw _privateConstructorUsedError;
   List<EventModel>? get eventsList => throw _privateConstructorUsedError;
-  MetaModel? get metaModel => throw _privateConstructorUsedError;
   dynamic get error => throw _privateConstructorUsedError;
   bool? get favoriteUpdate => throw _privateConstructorUsedError;
 
@@ -897,7 +896,6 @@ abstract class $EventsStateCopyWith<$Res> {
       int perPage,
       int nextPage,
       List<EventModel>? eventsList,
-      MetaModel? metaModel,
       dynamic error,
       bool? favoriteUpdate});
 }
@@ -917,7 +915,6 @@ class _$EventsStateCopyWithImpl<$Res> implements $EventsStateCopyWith<$Res> {
     Object? perPage = freezed,
     Object? nextPage = freezed,
     Object? eventsList = freezed,
-    Object? metaModel = freezed,
     Object? error = freezed,
     Object? favoriteUpdate = freezed,
   }) {
@@ -942,10 +939,6 @@ class _$EventsStateCopyWithImpl<$Res> implements $EventsStateCopyWith<$Res> {
           ? _value.eventsList
           : eventsList // ignore: cast_nullable_to_non_nullable
               as List<EventModel>?,
-      metaModel: metaModel == freezed
-          ? _value.metaModel
-          : metaModel // ignore: cast_nullable_to_non_nullable
-              as MetaModel?,
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -971,7 +964,6 @@ abstract class _$$EventsListStateCopyWith<$Res>
       int perPage,
       int nextPage,
       List<EventModel>? eventsList,
-      MetaModel? metaModel,
       dynamic error,
       bool? favoriteUpdate});
 }
@@ -994,7 +986,6 @@ class __$$EventsListStateCopyWithImpl<$Res>
     Object? perPage = freezed,
     Object? nextPage = freezed,
     Object? eventsList = freezed,
-    Object? metaModel = freezed,
     Object? error = freezed,
     Object? favoriteUpdate = freezed,
   }) {
@@ -1019,10 +1010,6 @@ class __$$EventsListStateCopyWithImpl<$Res>
           ? _value._eventsList
           : eventsList // ignore: cast_nullable_to_non_nullable
               as List<EventModel>?,
-      metaModel: metaModel == freezed
-          ? _value.metaModel
-          : metaModel // ignore: cast_nullable_to_non_nullable
-              as MetaModel?,
       error: error == freezed
           ? _value.error
           : error // ignore: cast_nullable_to_non_nullable
@@ -1044,7 +1031,6 @@ class _$EventsListState implements EventsListState {
       required this.perPage,
       required this.nextPage,
       final List<EventModel>? eventsList,
-      this.metaModel,
       this.error,
       this.favoriteUpdate})
       : _eventsList = eventsList;
@@ -1067,15 +1053,13 @@ class _$EventsListState implements EventsListState {
   }
 
   @override
-  final MetaModel? metaModel;
-  @override
   final dynamic error;
   @override
   final bool? favoriteUpdate;
 
   @override
   String toString() {
-    return 'EventsState(searchRequest: $searchRequest, page: $page, perPage: $perPage, nextPage: $nextPage, eventsList: $eventsList, metaModel: $metaModel, error: $error, favoriteUpdate: $favoriteUpdate)';
+    return 'EventsState(searchRequest: $searchRequest, page: $page, perPage: $perPage, nextPage: $nextPage, eventsList: $eventsList, error: $error, favoriteUpdate: $favoriteUpdate)';
   }
 
   @override
@@ -1090,7 +1074,6 @@ class _$EventsListState implements EventsListState {
             const DeepCollectionEquality().equals(other.nextPage, nextPage) &&
             const DeepCollectionEquality()
                 .equals(other._eventsList, _eventsList) &&
-            const DeepCollectionEquality().equals(other.metaModel, metaModel) &&
             const DeepCollectionEquality().equals(other.error, error) &&
             const DeepCollectionEquality()
                 .equals(other.favoriteUpdate, favoriteUpdate));
@@ -1104,7 +1087,6 @@ class _$EventsListState implements EventsListState {
       const DeepCollectionEquality().hash(perPage),
       const DeepCollectionEquality().hash(nextPage),
       const DeepCollectionEquality().hash(_eventsList),
-      const DeepCollectionEquality().hash(metaModel),
       const DeepCollectionEquality().hash(error),
       const DeepCollectionEquality().hash(favoriteUpdate));
 
@@ -1121,7 +1103,6 @@ abstract class EventsListState implements EventsState {
       required final int perPage,
       required final int nextPage,
       final List<EventModel>? eventsList,
-      final MetaModel? metaModel,
       final dynamic error,
       final bool? favoriteUpdate}) = _$EventsListState;
 
@@ -1135,8 +1116,6 @@ abstract class EventsListState implements EventsState {
   int get nextPage;
   @override
   List<EventModel>? get eventsList;
-  @override
-  MetaModel? get metaModel;
   @override
   dynamic get error;
   @override

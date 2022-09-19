@@ -11,7 +11,6 @@ class EventsState with _$EventsState {
     required int perPage,
     required int nextPage,
     List<EventModel>? eventsList,
-    MetaModel? metaModel,
     dynamic error,
     bool? favoriteUpdate,
   }) = EventsListState;

@@ -79,7 +79,6 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
       );
       final bool searchNotChanged = event.searchRequest == state.searchRequest;
       final List<EventModel> newEvents = result.events;
-      final MetaModel meta = result.meta;
       final int perPage = event.perPage;
       final int currentPage = event.page;
       final isLastPage = newEvents.length < perPage;
@@ -96,7 +95,6 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
         page: currentPage,
         perPage: perPage,
         nextPage: nextPage,
-        metaModel: meta,
       ));
     } catch (error) {
       emit(state.copyWith(error: error));
