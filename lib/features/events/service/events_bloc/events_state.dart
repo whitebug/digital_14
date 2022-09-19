@@ -9,7 +9,7 @@ class EventsState with _$EventsState {
     required String searchRequest,
     required int page,
     required int perPage,
-    required int nextPage,
+    int? nextPage,
     List<EventModel>? eventsList,
     dynamic error,
     bool? favoriteUpdate,

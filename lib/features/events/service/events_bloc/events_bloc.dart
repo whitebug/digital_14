@@ -82,7 +82,7 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
       final int perPage = event.perPage;
       final int currentPage = event.page;
       final isLastPage = newEvents.length < perPage;
-      final nextPage = isLastPage ? currentPage : currentPage + 1;
+      final nextPage = isLastPage ? null : currentPage + 1;
       final List<String> favorites = await _helper.get(favoriteEventListKey) ?? [];
       final List<EventModel> allEvents = _getAllEvents(
         newEvents: newEvents,
@@ -118,11 +118,13 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
     _TurnPageEvent event,
     Emitter<EventsState> emit,
   ) {
-    add(EventsListEvent.getEvents(
-      searchRequest: state.searchRequest,
-      page: state.nextPage,
-      perPage: state.perPage,
-    ));
+    if (state.nextPage != null) {
+      add(EventsListEvent.getEvents(
+        searchRequest: state.searchRequest,
+        page: state.nextPage!,
+        perPage: state.perPage,
+      ));
+    }
   }
 
   void _onReset(

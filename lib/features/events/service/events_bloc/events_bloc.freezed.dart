@@ -875,7 +875,7 @@ mixin _$EventsState {
   String get searchRequest => throw _privateConstructorUsedError;
   int get page => throw _privateConstructorUsedError;
   int get perPage => throw _privateConstructorUsedError;
-  int get nextPage => throw _privateConstructorUsedError;
+  int? get nextPage => throw _privateConstructorUsedError;
   List<EventModel>? get eventsList => throw _privateConstructorUsedError;
   dynamic get error => throw _privateConstructorUsedError;
   bool? get favoriteUpdate => throw _privateConstructorUsedError;
@@ -894,7 +894,7 @@ abstract class $EventsStateCopyWith<$Res> {
       {String searchRequest,
       int page,
       int perPage,
-      int nextPage,
+      int? nextPage,
       List<EventModel>? eventsList,
       dynamic error,
       bool? favoriteUpdate});
@@ -934,7 +934,7 @@ class _$EventsStateCopyWithImpl<$Res> implements $EventsStateCopyWith<$Res> {
       nextPage: nextPage == freezed
           ? _value.nextPage
           : nextPage // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       eventsList: eventsList == freezed
           ? _value.eventsList
           : eventsList // ignore: cast_nullable_to_non_nullable
@@ -962,7 +962,7 @@ abstract class _$$EventsListStateCopyWith<$Res>
       {String searchRequest,
       int page,
       int perPage,
-      int nextPage,
+      int? nextPage,
       List<EventModel>? eventsList,
       dynamic error,
       bool? favoriteUpdate});
@@ -1005,7 +1005,7 @@ class __$$EventsListStateCopyWithImpl<$Res>
       nextPage: nextPage == freezed
           ? _value.nextPage
           : nextPage // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
       eventsList: eventsList == freezed
           ? _value._eventsList
           : eventsList // ignore: cast_nullable_to_non_nullable
@@ -1029,7 +1029,7 @@ class _$EventsListState implements EventsListState {
       {required this.searchRequest,
       required this.page,
       required this.perPage,
-      required this.nextPage,
+      this.nextPage,
       final List<EventModel>? eventsList,
       this.error,
       this.favoriteUpdate})
@@ -1042,7 +1042,7 @@ class _$EventsListState implements EventsListState {
   @override
   final int perPage;
   @override
-  final int nextPage;
+  final int? nextPage;
   final List<EventModel>? _eventsList;
   @override
   List<EventModel>? get eventsList {
@@ -1101,7 +1101,7 @@ abstract class EventsListState implements EventsState {
       {required final String searchRequest,
       required final int page,
       required final int perPage,
-      required final int nextPage,
+      final int? nextPage,
       final List<EventModel>? eventsList,
       final dynamic error,
       final bool? favoriteUpdate}) = _$EventsListState;
@@ -1113,7 +1113,7 @@ abstract class EventsListState implements EventsState {
   @override
   int get perPage;
   @override
-  int get nextPage;
+  int? get nextPage;
   @override
   List<EventModel>? get eventsList;
   @override
