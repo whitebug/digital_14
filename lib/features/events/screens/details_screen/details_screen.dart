@@ -79,18 +79,18 @@ class DetailsScreen extends ElementaryWidget<DetailsScreenWidgetModel> {
                   width: wm.screenWidth,
                   child: wm.imageUrl != null
                       ? CachedNetworkImage(
-                    imageUrl: wm.imageUrl!,
-                    placeholder: (context, url) =>
-                    const Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                    errorWidget: (context, url, error) => EventImage.icon,
-                    fit: BoxFit.cover,
-                  )
+                          imageUrl: wm.imageUrl!,
+                          placeholder: (context, url) => const Center(
+                            child: CircularProgressIndicator(),
+                          ),
+                          errorWidget: (context, url, error) => EventImage.icon,
+                          fit: BoxFit.cover,
+                          cacheManager: wm.cacheManager,
+                        )
                       : const ColoredBox(
-                    color: hintColor,
-                    child: EventImage.icon,
-                  ),
+                          color: hintColor,
+                          child: EventImage.icon,
+                        ),
                 ),
               ),
               const SizedBox(height: 15.0),
@@ -101,7 +101,7 @@ class DetailsScreen extends ElementaryWidget<DetailsScreenWidgetModel> {
               ),
               const SizedBox(height: 10.0),
               Text(
-                '${eventModel?.venue?.city}, ${eventModel?.venue?.state}',
+                '${wm.eventModel?.venue?.city}, ${wm.eventModel?.venue?.state}',
                 style: AppTypography.cardBody.copyWith(color: textColorPrimary),
                 overflow: TextOverflow.ellipsis,
               ),

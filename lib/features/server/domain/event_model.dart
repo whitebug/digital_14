@@ -78,6 +78,8 @@ class EventModel {
   Map<String, dynamic> toJson() => _$EventModelToJson(this);
 
   static List<EventModel> fromJsonToList(dynamic data) {
-    return (data as List).map((e) => EventModel.fromJson(e as Map<String, dynamic>)).toList();
+    return (data as List)
+        .map((e) => EventModel.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 }

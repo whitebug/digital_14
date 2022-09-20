@@ -1,4 +1,5 @@
 import 'package:digital_14/assets/colors/colors.dart';
+import 'package:digital_14/assets/strings/search_screen_strings.dart';
 import 'package:digital_14/features/events/screens/search_screen/search_screen_widget_model.dart';
 import 'package:digital_14/features/events/screens/search_screen/widgets/event_item_widget.dart';
 import 'package:digital_14/features/events/screens/search_screen/widgets/search_app_bar_widget/search_app_bar_widget.dart';
@@ -41,20 +42,23 @@ class SearchScreen extends ElementaryWidget<ISearchScreenWidgetModel> {
               );
             },
             firstPageErrorIndicatorBuilder: (_) => FirstPageErrorIndicator(
-              title: wm.l10n.errorNeedRefresh,
-              buttonTitle: wm.l10n.tryAgainButton,
+              title: SearchScreenStrings.errorNeedRefresh,
+              buttonTitle: SearchScreenStrings.tryAgainButton,
               onTryAgain: wm.pagingController.retryLastFailedRequest,
             ),
             newPageErrorIndicatorBuilder: (_) {
               return NewPageErrorIndicator(
-                title: '${wm.l10n.errorNeedRefresh}. ${wm.l10n.tryAgainButton}',
+                title:
+                    '${SearchScreenStrings.errorNeedRefresh}. ${SearchScreenStrings.tryAgainButton}',
                 onRefresh: wm.pagingController.retryLastFailedRequest,
               );
             },
-            firstPageProgressIndicatorBuilder: (_) => const FirstPageProgressIndicator(),
-            newPageProgressIndicatorBuilder: (_) => const NewPageProgressIndicator(),
-            noItemsFoundIndicatorBuilder: (_) => NoItemsFoundIndicator(
-              text: wm.l10n.nothingToShow,
+            firstPageProgressIndicatorBuilder: (_) =>
+                const FirstPageProgressIndicator(),
+            newPageProgressIndicatorBuilder: (_) =>
+                const NewPageProgressIndicator(),
+            noItemsFoundIndicatorBuilder: (_) => const NoItemsFoundIndicator(
+              text: SearchScreenStrings.nothingToShow,
             ),
           ),
         ),

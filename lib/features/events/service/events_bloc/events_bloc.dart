@@ -83,7 +83,8 @@ class EventsBloc extends Bloc<EventsListEvent, EventsState> {
       final int currentPage = event.page;
       final isLastPage = newEvents.length < perPage;
       final nextPage = isLastPage ? null : currentPage + 1;
-      final List<String> favorites = await _helper.get(favoriteEventListKey) ?? [];
+      final List<String> favorites =
+          await _helper.get(favoriteEventListKey) ?? [];
       final List<EventModel> allEvents = _getAllEvents(
         newEvents: newEvents,
         searchNotChanged: searchNotChanged,

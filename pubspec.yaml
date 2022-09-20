@@ -24,21 +24,24 @@ dependencies:
   build_runner: ^2.2.0
   logger: ^1.1.0
   flutter_bloc: ^8.1.1
-  intl: ^0.17.0
   flutter_dotenv: ^5.0.2
   retrofit: ^3.0.1+1
   async: ^2.9.0
   freezed_annotation: ^2.1.0
   surf_logger: ^1.1.0
   infinite_scroll_pagination: ^3.2.0
+  golden_toolkit: ^0.13.0
+  flutter_cache_manager: ^3.3.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  mocktail: ^0.3.0
   freezed: ^2.1.0+1
   retrofit_generator: ^4.0.3+1
+  elementary_test: ^1.1.2
+  mockito: ^5.3.1
+  bloc_test: ^9.1.0
 
 flutter:
   uses-material-design: true

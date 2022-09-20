@@ -4,7 +4,6 @@ import 'package:async/async.dart';
 import 'package:digital_14/features/app/di/app_scope.dart';
 import 'package:digital_14/features/events/screens/search_screen/widgets/search_app_bar_widget/search_app_bar_model.dart';
 import 'package:digital_14/features/events/screens/search_screen/widgets/search_app_bar_widget/search_app_bar_widget.dart';
-import 'package:digital_14/l10n/l10n.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,17 +18,13 @@ SearchAppBarWidgetModel searchAppBarWidgetModelFactory(
   );
 }
 
-class SearchAppBarWidgetModel extends WidgetModel<SearchAppBarWidget, SearchAppBarModel>
+class SearchAppBarWidgetModel
+    extends WidgetModel<SearchAppBarWidget, SearchAppBarModel>
     implements ISearchAppBarWidgetModel {
   final TextEditingController _searchFieldController = TextEditingController();
 
-  late final AppLocalizations _l10n;
-
   @override
   TextEditingController get searchFieldController => _searchFieldController;
-
-  @override
-  AppLocalizations get l10n => _l10n;
 
   @override
   ValueNotifier<bool> get showCancelButton => model.showCancelButton;
@@ -44,7 +39,6 @@ class SearchAppBarWidgetModel extends WidgetModel<SearchAppBarWidget, SearchAppB
   @override
   void initWidgetModel() {
     super.initWidgetModel();
-    _l10n = context.l10n;
     _searchFieldController.addListener(_controllerListener);
   }
 
@@ -100,9 +94,6 @@ class SearchAppBarWidgetModel extends WidgetModel<SearchAppBarWidget, SearchAppB
 abstract class ISearchAppBarWidgetModel extends IWidgetModel {
   /// Text editing controller.
   TextEditingController get searchFieldController;
-
-  /// Localization
-  AppLocalizations get l10n;
 
   /// If to show cancel button in text field
   ValueNotifier<bool> get showCancelButton;

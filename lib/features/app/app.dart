@@ -1,10 +1,13 @@
 import 'package:digital_14/features/app/di/app_scope.dart';
 import 'package:digital_14/features/common/widgets/di_scope/di_scope.dart';
+import 'package:digital_14/features/events/service/repository/events_repository.dart';
+import 'package:digital_14/features/events/service/shared_pref_helper.dart';
 import 'package:digital_14/features/navigation/domain/delegate/app_router_delegate.dart';
 import 'package:digital_14/features/navigation/domain/entity/app_coordinate.dart';
 import 'package:digital_14/features/navigation/domain/parser/app_route_information_parser.dart';
 import 'package:digital_14/features/navigation/service/coordinator.dart';
-import 'package:digital_14/l10n/l10n.dart';
+import 'package:digital_14/features/server/events/events_client.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 /// App widget.
@@ -22,7 +25,15 @@ class AppState extends State<App> {
   @override
   void initState() {
     super.initState();
-    _scope = AppScope();
+    final Dio dio = Dio();
+    _scope = AppScope(
+      SharedPrefHelper(),
+      EventsClient(
+        dio,
+        baseUrl: baseUrl,
+      ),
+      dio,
+    );
     _setupRouting(_scope.coordinator);
   }
 
@@ -35,8 +46,6 @@ class AppState extends State<App> {
       child: MaterialApp.router(
         routeInformationParser: AppRouteInformationParser(),
         routerDelegate: AppRouterDelegate(_scope.coordinator),
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
       ),
     );
   }

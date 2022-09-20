@@ -6,6 +6,7 @@ import 'package:digital_14/features/server/events/events_client.dart';
 import 'package:digital_14/util/default_error_handler.dart';
 import 'package:dio/dio.dart';
 import 'package:elementary/elementary.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 /// Scope of dependencies which need through all app's life.
 class AppScope implements IAppScope {
@@ -16,6 +17,7 @@ class AppScope implements IAppScope {
   late final EventsBloc _eventsBloc;
   late final IEventsRepository _eventsRepository;
   late final SharedPrefHelper _sharedPrefHelper;
+  late final BaseCacheManager _cacheManager;
 
   @override
   ErrorHandler get errorHandler => _errorHandler;
@@ -32,13 +34,13 @@ class AppScope implements IAppScope {
   @override
   SharedPrefHelper get sharedHelper => _sharedPrefHelper;
 
+  @override
+  BaseCacheManager get cacheManager => _cacheManager;
+
   /// Create an instance [AppScope].
-  AppScope() {
-    _sharedPrefHelper = SharedPrefHelper();
+  AppScope(this._sharedPrefHelper, this._eventsClient, this._dio) {
     _errorHandler = DefaultErrorHandler();
     _coordinator = Coordinator();
-    _dio = Dio();
-    _eventsClient = EventsClient(_dio, baseUrl: baseUrl);
     _eventsRepository = EventsRepository(
       eventsClient: _eventsClient,
       dio: _dio,
@@ -47,6 +49,7 @@ class AppScope implements IAppScope {
       _eventsRepository,
       _sharedPrefHelper,
     );
+    _cacheManager = DefaultCacheManager();
   }
 }
 
@@ -66,4 +69,7 @@ abstract class IAppScope {
 
   /// Storage
   SharedPrefHelper get sharedHelper;
+
+  /// Cache manager
+  BaseCacheManager get cacheManager;
 }

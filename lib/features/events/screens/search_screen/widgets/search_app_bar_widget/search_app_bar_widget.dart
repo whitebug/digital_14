@@ -1,4 +1,5 @@
 import 'package:digital_14/assets/colors/colors.dart';
+import 'package:digital_14/assets/strings/search_app_bar_widget_strings.dart';
 import 'package:digital_14/assets/typography/app_typography.dart';
 import 'package:digital_14/features/events/screens/search_screen/widgets/search_app_bar_widget/search_app_bar_widget_model.dart';
 import 'package:elementary/elementary.dart';
@@ -67,7 +68,7 @@ class SearchAppBarWidget extends ElementaryWidget<ISearchAppBarWidgetModel> {
         TextButton(
           onPressed: wm.onCancelPressed,
           child: Text(
-            wm.l10n.cancel,
+            SearchAppBarWidgetStrings.cancel,
             style: AppTypography.title.copyWith(color: white),
           ),
         ),
